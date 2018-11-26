@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <br/>
+    <br/>
+    <div class="blog-post">
+        <h2 class="blog-post-title">MGB-2</h2>
+        <hr/>
+        <p>The <strong>MGB-2</strong> consists of 1,200 hours from Aljazeera TV programs. All programs have been
+            manually captioned with
+            no timing information. QCRI Arabic ASR system has been used to recognize all programs. The ASR output was
+            used to align the manual captioning and produce speech segments for training speech recognition. More than
+            20 hours from 2015 programs have been transcribed verbatim and manually segmented. This data is split into a
+            development set of 10 hours, and a similar evaluation set of 10 hours. Both the development and evaluation
+            data have been released in the 2016 MGB challenge.</p>
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary btn-lg " data-toggle="modal"
+                    data-target=".bd-example-modal-lg"><i class="fa fa-download"></i> Download MGB-2 Data
+            </button>
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form method="post" action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">License Agreement</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe src="{{ url_for('license') }}"
+                                    style="width:100%; height: 45rem;border:none;"></iframe>
+
+                            <!--<div class="form-group">-->
+                                <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                                <!--<input type="text" class="form-control" id="recipient-name">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                                <!--<textarea class="form-control" id="message-text"></textarea>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Accept and download</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <br/>
+        <p>The MGB-2 is freely available for <strong>research purpose</strong>. If a research team would like to have
+            access to the corpus. The license agreement has to be signed by the
+            head of the research group or professor, and email it to QCRI.</p>
+    </div><!-- /.blog-post -->
+</div>
+{% endblock content %}

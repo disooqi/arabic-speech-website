@@ -1,0 +1,5 @@
+pip install flask
+pip install flask-wtf
+import secrets;secrets.token_hex(16)
+pip install flask-sqlalchemy
+pip install flask-bcrypt

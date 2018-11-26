@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <br/>
+    <br/>
+    <div class="blog-post">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">New Post</h4>
+        <!--<p class="text-center">Get started with your free account</p>-->
+        <!--<p>-->
+        <!--<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>-->
+        <!--<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>-->
+        <!--</p>-->
+        <!--<p class="divider-text">-->
+        <!--<span class="bg-light">OR</span>-->
+        <!--</p>-->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i></span>
+                </div>
+                {% if form.title.errors %}
+                {{ form.title(class="form-control is-invalid", placeholder="title address") }}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.title(class="form-control", placeholder="Post title") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i></span></span>
+                </div>
+                {% if form.content.errors %}
+                {{ form.content(class="form-control is-invalid", placeholder="Post content") }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.content(class="form-control", placeholder="content") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group text-center">
+                {{ form.submit(class="btn btn-primary btn-block") }}
+                <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
+            </div> <!-- form-group// -->
+
+        </form>
+    </article>
+</div>
+</div>
+{% endblock content %}

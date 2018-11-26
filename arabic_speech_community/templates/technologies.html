@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <br/>
+    <br/>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                       aria-controls="nav-home" aria-selected="true">Automatic Speech Recognition</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Arabic Dialect Identifcation</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Text To Speech</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h4 class="">Automatic Speech Recognition</h4>
+                        <br/>
+                        <p>Automatic Speech Recognition (ASR) is defined as the process of realising acoustic speech audio into
+                            a corresponding word sequence, which is the word sequence that is as close as possible to what a
+                            human could transcribe. The best start for ASR is the <a
+                                    href="http://htk.eng.cam.ac.uk/docs/docs.shtml">HTKbook</a>.</p>
+                        <p>You can also learn a lot from <a href="http://kaldi-asr.org/">kaldi</a>. Kaldi is a toolkit for
+                            speech recognition written in C++ and
+                            licensed under the Apache License v2.0. Kaldi is intended for use by speech recognition researchers.
+                        </p>
+                        <p>You can learn more about Automatic Speech Recognition from the brief <a href="/publications.html">list
+                            of the most the recent publication</a> we provide.</p>
+                        <hr>
+
+                    </div><!-- /.blog-post -->
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h4 class="">Arabic Dialect Identifcation</h4>
+                        <br/>
+                        <p>Arabic dialects are sufficiently diverse to the extent that one can argue to describe them as different languages rather than dialects of the same language. Thus, automatically identifying the input dialect can greatly improve ASR.</p>
+                        <p>It can be argued that a language is a dialect with an army and navy. If we take this perspective into consideration, we can describe the different Arabic dialects as different languages. However, Arabic today is a language with different dialects and different armies!</p>
+                        <p>Dialect identification can be regarded as a special case of language recognition. However, dialect identification is a harder problem since there is no single view of how many spoken dialects there are in Arabic. You can learn about the latest research in Arabic Dialect Identification (ADI) <a href="/publications.html">here</a>.</p>
+                    </div><!-- /.blog-post -->
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h4 class="">Text To Speech</h4>
+                        <br/>
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+</div>
+{% endblock content %}

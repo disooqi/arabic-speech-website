@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+<!--<div class="card bg-light">-->
+<div class="blog-post">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Join Today</h4>
+        <!--<p class="text-center">Get started with your free account</p>-->
+        <!--<p>-->
+        <!--<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>-->
+        <!--<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>-->
+        <!--</p>-->
+        <!--<p class="divider-text">-->
+        <!--<span class="bg-light">OR</span>-->
+        <!--</p>-->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.fullname.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.fullname.errors %}
+                {{ form.fullname(class="form-control is-invalid", placeholder="Full name") }}
+                <div class="invalid-feedback">
+                    {% for error in form.fullname.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.fullname(class="form-control", placeholder="Full name") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-id-badge"></i>
+                &nbsp;&nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                    {% if form.username.flags.required %}*{% endif %}
+                </span>
+            </span>
+                </div>
+                {% if form.username.errors %}
+                {{ form.username(class="form-control is-invalid", placeholder="Username") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.username(class="form-control", placeholder="Username") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i>
+                &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                    {% if form.email.flags.required %}*{% endif %}
+                </span>
+            </span>
+                </div>
+                {% if form.email.errors %}
+                {{ form.email(class="form-control is-invalid", placeholder="Email address") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.email(class="form-control", placeholder="Email address") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>
+                &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                    {% if form.password.flags.required %}*{% endif %}
+                </span>
+            </span>
+                </div>
+                {% if form.password.errors %}
+                {{ form.password(class="form-control is-invalid", placeholder="Password") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class="form-control", placeholder="Password") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i>
+                &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                    {% if form.confirm_password.flags.required %}*{% endif %}
+                </span>
+            </span>
+                </div>
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control is-invalid", placeholder="Confirm password") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary btn-block") }}
+                <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
+            </div> <!-- form-group// -->
+            <p class="text-center">Have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+        </form>
+    </article>
+</div>
+</div> <!-- card.// -->
+{% endblock content %}
+{% block sidebar %}
+    <aside class="col-md-4 blog-sidebar">
+<div class="p-3">
+    <h4 class="font-italic">Archives</h4>
+    <ol class="list-unstyled mb-0">
+        <li><a href="#">August 2018</a></li>
+        <li><a href="#">July 2018</a></li>
+        <li><a href="#">April 2018</a></li>
+    </ol>
+</div>
+
+<div class="p-3">
+    <h4 class="font-italic">Elsewhere</h4>
+    <ol class="list-unstyled">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+    </ol>
+</div>
+    </aside>
+{% endblock sidebar %}

@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <br/>
+    <br/>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                       aria-controls="nav-home" aria-selected="true">Corpora</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Code</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h2 class="blog-post-title">Automatic Speech Recognition</h2>
+                        <br/>
+                        <p>The Multi-Genre Broadcast (MGB) Challenge is an evaluation of speech recognition, speaker
+                            diarization, dialect detection and lightly supervised alignment using TV recordings in
+                            English and Arabic. More details about the MGB Challenge can be found <a
+                                    href="http://www.mgb-challenge.org/">here.</a></p>
+                        <hr>
+                        <h3>MGB-2</h3>
+                        <p>The 1,200 hours from Aljazeera TV programs have been manually captioned with no timing
+                            information. QCRI Arabic ASR system has been used to recognize all programs. The ASR output
+                            was used to align the manual captioning and produce speech segments for training speech
+                            recognition. More than 20 hours from 2015 programs have been transcribed verbatim and
+                            manually segmented. This data is split into a development set of 10 hours, and a similar
+                            evaluation set of 10 hours. Both the development and evaluation data have been released in
+                            the 2016 MGB challenge. You can download it <a href="{{ url_for('mgb2') }}">here</a>.</p>
+                        <h3>MGB-3</h3>
+                        <p>The MGB-3 is 16 hours multi-genre data collected from different YouTube channels. The 16
+                            hours have been manually transcribed. The chosen Arabic dialect for the MGB-3 is Egyptian.
+                            Given that dialectal Arabic has no orthographic rules, each program has been transcribed by
+                            four different transcribers using <a
+                                    href="http://alt.qcri.org/resources/MGB-3/Arabic_Transcription%20_Guidelines_20170330.pdf">this
+                                transcription guidelines.</a> The MGB-3 data is split into three groups; adaptation,
+                            development and evaluation data which will be shared at the evaluation time as shown in the
+                            dates. You can download it <a href="http://crowdsource.cloudapp.net/mgb3.tar.bz2">here.</a>
+                        </p>
+                        <p>More details about the Arabic version of the MGB can be found <a
+                                href="http://www.mgb-challenge.org/arabic.html">here.</a></p>
+                        <hr>
+                        <h3>Lexicons</h3>
+                        <p>The grapheme-based Arabic speech lexicon is 1:1 word to grapheme mapping. You can find it <a
+                                href="http://alt.qcri.org/resources/speech/dictionary/ar-ar_grapheme_lexicon_2016-02-09.bz2">here.</a>
+                        </p>
+                        <p>The phoneme-based Arabic speech lexicon is roughly 3.8:1 word to phoneme mapping. You can
+                            find it <a
+                                    href="http://alt.qcri.org/resources/speech/dictionary/ar-ar_lexicon_2014-03-17.txt.bz2">here.</a>
+                        </p>
+                        <p>The grapheme-based Egyptian Arabic speech lexicon. You can find it <a
+                                href="http://alt.qcri.org/resources/speech/Egyptian/egyVoc400K">here.</a></p>
+                    </div><!-- /.blog-post -->
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">Arabic Dialect Identifcation</h2>
+                        <br/>
+                        <p>In this task, we classify Arabic speech into five dialects:</p>
+                        <p>Egyptian Arabic (EGY) covers the dialects of the Nile valley: Egypt and Sudan. Levantine
+                            (LAV) Arabic includes the dialects of Lebanon, Syria, Jordan, Palestine, and Israel. Gulf
+                            Arabic (GLF) includes the dialects of Kuwait, United Arab Emirates, Bahrain, and Qatar.
+                            Saudi Arabia is typically included although there is a wide range of sub-dialects within it.
+                            Omani Arabic is sometimes included as well. North African (NOR) Arabic (also known as
+                            Maghrebi) covers the dialects of Morocco, Algeria, Tunisia, and Mauritania. Libyan Arabic is
+                            sometimes included too. Modern Standard Arabic (MSA), which constitutes formal speech The
+                            Arabic Dialect Identification (ADI) classification assumes that each speech segment
+                            corresponds to one Arabic native speaker is spoken in a single dialect.</p>
+                        <p>You can find the data <a href="https://github.com/qcri/dialectID/tree/master/data">here.</a>
+                        </p>
+                    </div><!-- /.blog-post -->
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h3>Automatic Speech Recognition</h3>
+                        <p>Kaldi Arabic speech recognition recipe for speech recognition can be found <a
+                                href="https://github.com/kaldi-asr/kaldi/tree/master/egs/gale_arabic">here.</a></p>
+                        <p>The MGB Arabic speech recognition challenge code can be found <a
+                                href="https://github.com/qcri/ArabicASRChallenge2016">here.</a></p>
+                        <hr>
+                        <h3 id="arabic-dialect-identification">Arabic Dialect Identification</h3>
+                        <p>Arabic Dialect Identification repository can be found <a
+                                href="https://github.com/qcri/dialectID">here.</a></p>
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+</div>
+{% endblock content %}

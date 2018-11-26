@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block jumbotron %}
+<div class="jumbotron p-3 p-md-5 rounded bg-dark"
+     style="background-image: url({{ url_for('static', filename='images/ArabicSpeech_Logo-834-268.png') }}); background-size: 100% 100%;">
+    <div class="col-md-6 px-0">
+        <h1 class="display-4 font-italic"></h1>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <p class="lead my-3"></p>
+        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
+    </div>
+</div>
+{% endblock jumbotron %}
+{% block announcement %}
+<div class="row mb-2">
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">Scholarships</strong>
+                <h5 class="mb-0">
+                    <a class="text-dark" href="#">PhD in Speech, Language & Hearing Sciences</a>
+                </h5>
+                <div class="mb-1 text-muted">1 hour ago</div>
+                <p class="card-text mb-auto">The Department of Speech, Language & Hearing Sciences offers a doctoral
+                    program that prepa ...</p>
+                <a href="#">check out</a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block"
+                 src="{{ url_for('static', filename='images/download.jpeg') }}" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-success">Newly Published</strong>
+                <h5 class="mb-0">
+                    <a class="text-dark" href="#">Multi-dialect Arabic broadcast speech recognition</a>
+                </h5>
+                <div class="mb-1 text-muted">23 hours ago</div>
+                <p class="card-text mb-auto">Dialectal Arabic speech research suffers from the lack of labelled
+                    resources and standardised orthography. There are three main challenges in dialectal Arabic speech
+                    recognition: (i) finding labelled dialectal Arabic speech data, (ii) training robust dialectal
+                    ...</p>
+                <a href="#">Continue reading</a>
+            </div>
+            <!--<img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"-->
+            <!--alt="Card image cap">-->
+        </div>
+    </div>
+</div>
+{% endblock announcement %}
+{% block content %}
+<div class="col-md-8 blog-main">
+<h3 class="pb-3 mb-4 font-italic border-bottom">
+    Newly Added
+</h3>
+
+<div class="blog-post">
+    <h2 class="blog-post-title">Automatic Speech Recognition</h2>
+    <p class="blog-post-meta">August 24, 2018 by <a href="#">Ahmed Ali</a></p>
+    <p>Automatic Speech Recognition (ASR) is defined as the process of realising acoustic speech audio into
+        a corresponding word sequence, which is the word sequence that is as close as possible to what a
+        human could transcribe. The best start for ASR is the <a
+                href="http://htk.eng.cam.ac.uk/docs/docs.shtml">HTKbook</a>.</p>
+    <p>You can also learn a lot from <a href="http://kaldi-asr.org/">kaldi</a>. Kaldi is a toolkit for
+        speech recognition written in C++ and
+        licensed under the Apache License v2.0. Kaldi is intended for use by speech recognition researchers.
+    </p>
+    <p>You can learn more about Automatic Speech Recognition from the brief <a href="/publications.html">list
+        of the most the recent publication</a> we provide.</p>
+    <hr>
+</div><!-- /.blog-post -->
+
+<div class="blog-post">
+    <h2 class="blog-post-title">Arabic Dialect Identifcation</h2>
+    <p class="blog-post-meta">July 19, 2018 by <a href="#">Ahmed Ali</a></p>
+    <p>Arabic dialects are sufficiently diverse to the extent that one can argue to describe them as different languages
+        rather than dialects of the same language. Thus, automatically identifying the input dialect can greatly improve
+        ASR.</p>
+    <p>It can be argued that a language is a dialect with an army and navy. If we take this perspective into
+        consideration, we can describe the different Arabic dialects as different languages. However, Arabic today is a
+        language with different dialects and different armies!</p>
+    <p>Dialect identification can be regarded as a special case of language recognition. However, dialect identification
+        is a harder problem since there is no single view of how many spoken dialects there are in Arabic. You can learn
+        about the latest research in Arabic Dialect Identification (ADI) <a href="/publications.html">here</a>.</p>
+</div><!-- /.blog-post -->
+
+<div class="blog-post">
+    <h2 class="blog-post-title">Text To Speech</h2>
+    <p class="blog-post-meta">April 01, 2018 by <a href="#">Ahmed Ali</a></p>
+    <hr/>
+</div><!-- /.blog-post -->
+
+<nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+</nav>
+</div>
+{% endblock content %}
+
+{% block sidebar %}
+<aside class="col-md-4 blog-sidebar">
+<div class="p-3 mb-3 bg-light rounded">
+    <h4 class="font-italic">About</h4>
+    <p class="mb-0">Arabic Speech is an organization that runs for the benefit of the Arabic Speech Science
+        and Speech Technology community.</p>
+    <p class="mb-0">Arabic speech will concern with technologies in speech and language processing. Our main
+        focus will be Arabic both standard and dialectal.</p>
+    <p class="mb-0">Arabic speech will help to build innovation and technology capacity for the Arabic
+        language. It will focus on tackling large-scale computing challenges that address real priorities
+        that will impact people’s life.</p>
+    <p class="mb-0">We address the state of the art as well as the state of the market challenges.</p>
+    <p class="mb-0">We help to push the boundaries for Arabic speakers to make it world class
+        technology.</p>
+</div>
+
+<div class="p-3">
+    <h4 class="font-italic">Archives</h4>
+    <ol class="list-unstyled mb-0">
+        <li><a href="#">August 2018</a></li>
+        <li><a href="#">July 2018</a></li>
+        <li><a href="#">April 2018</a></li>
+    </ol>
+</div>
+
+<div class="p-3">
+    <h4 class="font-italic">Elsewhere</h4>
+    <ol class="list-unstyled">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+    </ol>
+</div>
+</aside><!-- /.blog-sidebar -->
+
+{% endblock sidebar %}

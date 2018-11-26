@@ -1,0 +1,5 @@
+.idea/
+.venv/
+__pycache__/
+arabic_speech_community/static/css/.DS_Store/
+

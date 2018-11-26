@@ -1,0 +1,306 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-12 blog-main">
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link active">Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link ">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                    </li>
+                </ul>
+                <div class="tab-content py-4">
+                    <div class="tab-pane " id="profile">
+                        <h5 class="mb-3">{{ current_user.username }} Profile</h5>
+                        <h6 class="mb-3">{{ current_user.email }} </h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>About</h6>
+                                <p>
+                                    Web Designer, UI/UX Engineer
+                                </p>
+                                <h6>Hobbies</h6>
+                                <p>
+                                    Indie music, skiing and hiking. I love the great outdoors.
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Recent badges</h6>
+                                <a href="#" class="badge badge-dark badge-pill">html5</a>
+                                <a href="#" class="badge badge-dark badge-pill">react</a>
+                                <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                                <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+                                <a href="#" class="badge badge-dark badge-pill">css3</a>
+                                <a href="#" class="badge badge-dark badge-pill">jquery</a>
+                                <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+                                <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                                <hr>
+                                <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+                                <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                                <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent
+                                    Activity</h5>
+                                <table class="table table-sm table-hover table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Abby</strong> joined ACME Project Team in
+                                            <strong>`Collaboration`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Kensington</strong> deleted MyBoard3 in
+                                            <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="alert alert-info alert-dismissable">
+                            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>.
+                            Use this to show important messages to the user.
+                        </div>
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to
+                                    the latest summary report from the..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="float-right font-weight-bold">Yesterday</span> There has been a request
+                                    on your account since that was..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices
+                                    quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt
+                                    ullamcorper eros eget luctus.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for
+                                    tibulum tincidunt ullamcorper eros.
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane active" id="edit">
+                        <form method="POST" action="" role="form" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group row">
+                                {{ form.fullname.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.fullname.errors %}
+                                    {{ form.fullname(class="form-control is-invalid", placeholder="Full name") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.fullname.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.fullname(class="form-control", placeholder="Full name") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.username.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.username.errors %}
+                                    {{ form.username(class="form-control is-invalid", placeholder="Username") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.username(class="form-control", placeholder="Username") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.address.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.address.errors %}
+                                    {{ form.address(class="form-control is-invalid", placeholder="Postal address") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.address.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                        {{ form.address(class="form-control", placeholder="Postal address") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                {{ form.email.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid", placeholder="Email address") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.email(class="form-control", placeholder="Email address") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.telephone.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.telephone.errors %}
+                                    {{ form.telephone(class="form-control is-invalid", placeholder="Telephone number") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.telephone.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.telephone(class="form-control", placeholder="Telephone number") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.fax.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.fax.errors %}
+                                    {{ form.fax(class="form-control is-invalid", placeholder="Fax number") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.fax.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.fax(class="form-control", placeholder="Fax number") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.position.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.position.errors %}
+                                    {{ form.position(class="form-control is-invalid", placeholder="Position/Title") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.position.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.position(class="form-control", placeholder="Position/Title") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.affiliation.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.affiliation.errors %}
+                                    {{ form.affiliation(class="form-control is-invalid", placeholder="Institute") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.affiliation.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.affiliation(class="form-control", placeholder="Institute") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!--<label class="col-lg-3 col-form-label form-control-label">Email address</label>-->
+                                {{ form.department.label(class="col-lg-3 col-form-label form-control-label") }}
+                                <div class="col-lg-9">
+                                    {% if form.department.errors %}
+                                    {{ form.department(class="form-control is-invalid", placeholder="Department/Group") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.department.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                        {{ form.department(class="form-control", placeholder="Department/Group") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group row">
+                                {{ form.picture.label(class="col-lg-3 col-form-label form-control-label") }}
+                            <div class="col-lg-9">
+                                {{ form.picture() }}
+                                {% if form.picture.errors %}
+                                    {% for error in form.picture.errors %}
+                                        <br/><span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-9">
+                                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        {{ form.submit(class="btn btn-primary") }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <img style="width: 180px; " src="{{ image_path }}" class="mx-auto img-fluid img-circle d-block"
+                     alt="avatar">
+                <h6 class="mt-2">Profile picture</h6>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
