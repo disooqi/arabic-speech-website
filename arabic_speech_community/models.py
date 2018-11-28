@@ -25,6 +25,8 @@ class User(db.Model, UserMixin):
     telephone = db.Column(db.String(15), nullable=True)
     fax = db.Column(db.String(15), nullable=True)
 
+    # committee_member = db.Column(db.Boolean, nullable=False, default=False)
+
     posts = db.relationship('Post', backref='author', lazy=True)
     mgb2links = db.relationship('MGB2link', backref='requester', lazy=True)
 
