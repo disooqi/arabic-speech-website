@@ -85,7 +85,15 @@
 <main role="main" class="container">
     <div class="row">
             {% block content %}{% endblock content %}
-            {% block sidebar %}{% endblock sidebar %}
+            {% block sidebar %}
+			<aside class="col-md-4 blog-sidebar">
+				<div class="p-3">
+					<a class="twitter-timeline" href="https://twitter.com/ArabicSpeech?ref_src=twsrc%5Etfw">Tweets by ArabicSpeech</a> 
+					<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+				</div>
+			</aside><!-- /.blog-sidebar -->
+
+			{% endblock sidebar %}
     </div><!-- /.row -->
 
 </main><!-- /.container -->

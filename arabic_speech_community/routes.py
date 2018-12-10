@@ -56,16 +56,16 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(fullname=form.fullname.data, username=form.username.data, email=form.email.data,
+        user = User(fullname=form.fullname.data, email=form.email.data,
                     password=hashed_password)
         db.session.add(user)
         try:
             db.session.commit()
-            flash(f'Account is created for {form.username.data}!', 'success')
+            flash(f'Account is created for {form.email.data}!', 'success')
             return redirect(url_for('login'))
         except:
             db.session.rollback()
-            flash(f'Error while create account for {form.username.data}!, try again later', 'danger')
+            flash(f'Error while create account for {form.email.data}!, try again later', 'danger')
 
     return render_template('register.html', title='Register', form=form)
 
@@ -116,7 +116,6 @@ def account():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
-        current_user.username = form.username.data
         current_user.email = form.email.data
         current_user.fullname = form.fullname.data
         current_user.position = form.position.data
@@ -126,7 +125,6 @@ def account():
         flash('Your account has been updated successfully', 'success')
         return redirect(url_for('account')) # for the "POST GET REDIRECT pattern" problem
     elif request.method == 'GET':
-        form.username.data = current_user.username
         form.fullname.data = current_user.fullname
         form.email.data = current_user.email
         form.position.data = current_user.position

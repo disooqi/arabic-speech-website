@@ -35,25 +35,7 @@
                 {{ form.fullname(class="form-control", placeholder="Full name") }}
                 {% endif %}
             </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-id-badge"></i>
-                &nbsp;&nbsp;<span class="text-danger font-weight-bold text-lg-center">
-                    {% if form.username.flags.required %}*{% endif %}
-                </span>
-            </span>
-                </div>
-                {% if form.username.errors %}
-                {{ form.username(class="form-control is-invalid", placeholder="Username") }}
-                <div class="invalid-feedback">
-                    {% for error in form.username.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.username(class="form-control", placeholder="Username") }}
-                {% endif %}
-            </div> <!-- form-group// -->
+            
             <div class="form-group input-group">
                 <div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i>

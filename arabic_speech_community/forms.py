@@ -7,12 +7,7 @@ from .models import User
 
 
 class RegistrationForm(FlaskForm):
-    fullname = StringField('Full name', validators=[DataRequired(), Length(min=10, max=50)])
-    username = StringField('Username',
-                           validators=[
-                               DataRequired(message="Disooqi says its required"),
-                               Length(min=5, max=20)
-                           ])
+    fullname = StringField('Full name', validators=[DataRequired(), Length(min=1, max=50)])
     email = StringField('Email address', validators=[DataRequired(), Email()])
     # telephone = StringField('Phone number', validators=[Length(min=8)])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -22,11 +17,6 @@ class RegistrationForm(FlaskForm):
     def validate_field(self, field):
         if True:
             raise ValidationError('Validation Message')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user:
-            raise ValidationError(f'The user "{username.data}" is already exist.')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -43,11 +33,6 @@ class LoginForm(FlaskForm):
 
 class UpdateAccountForm(FlaskForm):
     fullname = StringField('Full name', validators=[DataRequired(), Length(min=10, max=50)])
-    username = StringField('Username',
-                           validators=[
-                               DataRequired(message="Disooqi says its required"),
-                               Length(min=5, max=20)
-                           ])
     email = StringField('Email address', validators=[DataRequired(), Email()])
     picture = FileField('Profile picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
 
@@ -60,12 +45,6 @@ class UpdateAccountForm(FlaskForm):
     fax = StringField('Fax number', validators=[Length(max=15)])
 
     submit = SubmitField('Update Account')
-
-    def validate_username(self, username):
-        if username.data != current_user.username:
-            user = User.query.filter_by(username=username.data).first()
-            if user:
-                raise ValidationError(f'The user "{username.data}" is already exist.')
 
     def validate_email(self, email):
         if email.data != current_user.email:
