@@ -1,8 +1,6 @@
 .profile-card {
-    width: auto;
-    overflow: scroll;
-    max-height: 730px;
-    height: 730px;
+    width: 400px;
+    overflow: hidden;
     /*position: absolute;*/
     /*top: 50%;*/
     /*left: 50%;*/
