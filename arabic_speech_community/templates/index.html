@@ -18,11 +18,11 @@
             <div class="card-body d-flex flex-column align-items-start">
                 <strong class="d-inline-block mb-2 text-primary">Scholarships</strong>
                 <h5 class="mb-0">
-                    <a class="text-dark" href="#">PhD in Speech, Language & Hearing Sciences</a>
+                    <a class="text-dark" href="{{ url_for('vacancies')}}">Jobs and PhD in Speech, Language & Hearing Sciences</a>
                 </h5>
-                <p class="card-text mb-auto">The Department of Speech, Language & Hearing Sciences offers a doctoral
-                    program that prepa ...</p>
-                <a href="#">check out</a>
+                <p class="card-text mb-auto">You can find here the latest updates bout posts and PhD offers 
+                    related to Arabic speech  ...</p> 
+                <a href="{{ url_for('vacancies')}}">check out</a>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block"
                  src="{{ url_for('static', filename='images/download.jpeg') }}" alt="Card image cap">
@@ -33,13 +33,13 @@
             <div class="card-body d-flex flex-column align-items-start">
                 <strong class="d-inline-block mb-2 text-success">Newly Published</strong>
                 <h5 class="mb-0">
-                    <a class="text-dark" href="#">Multi-dialect Arabic broadcast speech recognition</a>
+                    <a class="text-dark" href="/mgb2.html">Multi-dialect Arabic broadcast speech recognition</a>
                 </h5>
                 <p class="card-text mb-auto">Dialectal Arabic speech research suffers from the lack of labelled
                     resources and standardised orthography. There are three main challenges in dialectal Arabic speech
                     recognition: (i) finding labelled dialectal Arabic speech data, (ii) training robust dialectal
                     ...</p>
-                <a href="#">Continue reading</a>
+                <a href="{{ url_for('mgb2')}}">Continue reading</a>
             </div>
             <!--<img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"-->
             <!--alt="Card image cap">-->
