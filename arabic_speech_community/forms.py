@@ -9,9 +9,17 @@ from .models import User
 class RegistrationForm(FlaskForm):
     fullname = StringField('Full name', validators=[DataRequired(), Length(min=1, max=50)])
     email = StringField('Email address', validators=[DataRequired(), Email()])
-    # telephone = StringField('Phone number', validators=[Length(min=8)])
+    
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
+
+    position = StringField('Position/Title', validators=[DataRequired(), Length(max=100)])
+    affiliation = StringField('Affiliation', validators=[DataRequired(), Length(max=120)])
+    department = StringField('Department/Group', validators=[DataRequired(), Length(max=120)])
+    address = StringField('Postal address', validators=[DataRequired(), Length(max=200)])
+
+    telephone = StringField('Telephone number', validators=[DataRequired(), Length(max=15)])
+    
     submit = SubmitField('Create Account')
 
     def validate_field(self, field):
@@ -32,18 +40,17 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-    fullname = StringField('Full name', validators=[DataRequired(), Length(min=10, max=50)])
+    fullname = StringField('Full name', validators=[DataRequired(), Length(min=1, max=50)])
     email = StringField('Email address', validators=[DataRequired(), Email()])
-    picture = FileField('Profile picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
+    
 
-    position = StringField('Position/Title', validators=[Length(max=100)])
-    affiliation = StringField('Affiliation', validators=[Length(max=120)])
-    department = StringField('Department/Group', validators=[Length(max=120)])
-    address = StringField('Postal address', validators=[Length(max=200)])
+    position = StringField('Position/Title', validators=[DataRequired(), Length(max=100)])
+    affiliation = StringField('Affiliation', validators=[DataRequired(), Length(max=120)])
+    department = StringField('Department/Group', validators=[DataRequired(), Length(max=120)])
+    address = StringField('Postal address', validators=[DataRequired(), Length(max=200)])
 
-    telephone = StringField('Telephone number', validators=[Length(max=15)])
-    fax = StringField('Fax number', validators=[Length(max=15)])
-
+    telephone = StringField('Telephone number', validators=[DataRequired(), Length(max=15)])
+    
     submit = SubmitField('Update Account')
 
     def validate_email(self, email):
@@ -51,19 +58,3 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError(f'The email "{email.data}" is already exist.')
-
-
-class MGB2LicenseForm(FlaskForm):
-    contribution = RadioField('Are You willing to contribute to the Corpus for future releases?',
-                              choices=[('Yes', 'I am definitely contributing to the Corpus.'),
-                                       ('No', 'I am definitely not contributing to the Corpus.'),
-                                       ('Possibly', 'I didn\'t make my mind yet.')],
-                              validators=[DataRequired()]
-                              )
-
-
-class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-
-    submit = SubmitField('Post')

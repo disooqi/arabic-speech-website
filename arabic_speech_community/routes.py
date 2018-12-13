@@ -1,11 +1,11 @@
 import os
 import secrets
-from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from . import app, bcrypt, db
-from .forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from .models import User, Post
+from .forms import RegistrationForm, LoginForm, UpdateAccountForm
+from .models import User
 from flask_login import login_user, current_user, logout_user, login_required
+from datetime import date
 
 
 @app.route('/')
@@ -57,7 +57,9 @@ def register():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(fullname=form.fullname.data, email=form.email.data,
-                    password=hashed_password)
+                    password=hashed_password, position=form.position.data,
+                    affiliation=form.affiliation.data, department=form.department.data,
+                    address=form.address.data, telephone=form.department.data)
         db.session.add(user)
         try:
             db.session.commit()
@@ -92,52 +94,42 @@ def logout():
     return redirect(url_for('home'))
 
 
-def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    _, picture_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + picture_ext
-    picture_path = os.path.join(app.root_path, 'static', 'images', 'profile_pcs', picture_fn)
-
-    image_resize_to = (300, 360)
-    i = Image.open(form_picture)
-    i.thumbnail(image_resize_to)
-    i.save(picture_path)
-
-    return picture_fn
-
-
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    image_file = current_user.image_file
-    image_path = url_for('static', filename=f'images/profile_pcs/{image_file}')
     form = UpdateAccountForm()
     if form.validate_on_submit():
-        if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
-        current_user.email = form.email.data
+        
         current_user.fullname = form.fullname.data
+        current_user.email = form.email.data
+
         current_user.position = form.position.data
-        current_user.institution = form.affiliation.data
+        current_user.affiliation = form.affiliation.data
+
         current_user.department = form.department.data
+        current_user.address = form.address.data
+
+        current_user.telephone = form.telephone.data
         db.session.commit()
         flash('Your account has been updated successfully', 'success')
         return redirect(url_for('account')) # for the "POST GET REDIRECT pattern" problem
     elif request.method == 'GET':
         form.fullname.data = current_user.fullname
         form.email.data = current_user.email
+        
         form.position.data = current_user.position
-        form.affiliation.data = current_user.institution
+        form.affiliation.data = current_user.affiliation
+
         form.department.data = current_user.department
+        form.address.data = current_user.address
+        form.telephone.data = current_user.telephone
     else:
-        flash('Something wrong with the form', 'warning')
+        flash('Something went wrong with the form', 'warning')
         for field, errors in form.errors.items():
             for error in errors:
                 flash(f"{field}: {error}", 'danger')
 
-    # image_path = url_for('static', filename=f'images/profile_pcs/citations.jpeg')
-    return render_template('account.html', title='Account page', image_path=image_path, form=form)
+    return render_template('account.html', title='Account page', form=form)
 
 
 @app.route('/mgb2')
@@ -149,14 +141,5 @@ def mgb2():
 @app.route('/license')
 @login_required
 def license():
-    return render_template('NON-EXCLUSIVE_RESEARCHER_LICENSE_QCRI-AL_JAZEERA_CORPUS.html')
-
-
-@app.route('/post/new', methods=['GET', 'POST'])
-@login_required
-def new_post():
-    form = PostForm()
-    if form.validate_on_submit():
-        flash('Your post has been created!', 'success')
-        return redirect(url_for('home'))
-    return render_template('create_post.html', title='New Post', form=form)
+    today=date.today().strftime('%A %d %B %Y')
+    return render_template('NON-EXCLUSIVE_RESEARCHER_LICENSE_QCRI-AL_JAZEERA_CORPUS.html',today=today)

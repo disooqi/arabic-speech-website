@@ -1157,29 +1157,28 @@
 <p class="P24"><span class="T6">Phone Number </span></p>
 <p class="P24"><span class="T6">and E-mail Address]</span></p>
 <p class="P36"> </p>
-<p class="P35"><span class="T10">Date:  ____________________________________</span></p>
-<p class="P35"><span class="T10">Name of Responsible User:                </span><span class="T9">            {{ current_user.fullname }}           </span>
+<p class="P35"><span class="T10">Date:                                    </span><span class="T9">   {{ today }}           </span></p>
+<p class="P35"><span class="T10">Name of Responsible User:                </span><span class="T9">   {{ current_user.fullname }}           </span>
 </p>
-<p class="P35"><span class="T10">Position/Title:                                </span><span class="T9">                                                </span>
+<p class="P35"><span class="T10">Position/Title:                          </span><span class="T9">   {{ current_user.position }}           </span>
 </p>
-<p class="P35"><span class="T10">Institution:                                </span><span class="T9">                                                </span>
+<p class="P35"><span class="T10">Institution:                             </span><span class="T9">   {{ current_user.affiliation }}           </span>
 </p>
-<p class="P35"><span class="T10">Department (if applicable):                </span><span class="T9">                                                </span>
+<p class="P35"><span class="T10">Department (if applicable):              </span><span class="T9">   {{ current_user.department }}           </span>
 </p>
-<p class="P35"><span class="T10">Postal Address:                                </span><span class="T9">                                                </span>
+<p class="P35"><span class="T10">Postal Address:                          </span><span class="T9">   {{ current_user.address }}           </span>
 </p>
-<p class="P35"><span class="T10">                                        </span><span
+<p class="P35"><span class="T10">                                         </span><span
         class="T9">                   </span></p>
-<p class="P35"><span class="T10">E-mail:                                        </span><span class="T9">          {{ current_user.email }}          </span>
+<p class="P35"><span class="T10">E-mail:                                  </span><span class="T9">   {{ current_user.email }}          </span>
 </p>
-<p class="P35"><span class="T10">Fax:                                        </span><span class="T9">                                                 </span>
+<p class="P35"><span class="T10">Telephone:                               </span><span class="T9">   {{ current_user.telephone }}           </span>
 </p>
-<p class="P35"><span class="T10">Telephone:                                </span><span class="T9">                                                </span>
+ <p class="P37"><span class="T10">Intent for use of the Corpus:            </span> <span class="T9">       RESEARCH <span>
 </p>
-<p class="P37"><span class="T10">Intent for use of the Corpus                ____________________________________</span>
-</p>
+<!--  <p class="P37"><span class="T10">__________________________________________________________________</span></p>
 <p class="P37"><span class="T10">__________________________________________________________________</span></p>
-<p class="P37"><span class="T10">__________________________________________________________________</span></p>
+
 <p class="P37"><span class="T10"> (Please be specific and provide URLs, if applicable).</span></p>
 <p class="P37"><span class="T10">If You have previously been in contact with the Corpus developers, please list their names:</span>
 </p>
@@ -1188,6 +1187,6 @@
 <p class="P37"><span class="T10">(Check one.) Yes ____ No ____ Possibly ______</span></p>
 <p class="P38"> </p>
 <p class="P37"><span class="T10">ACCEPT/SUBMIT                        CANCEL</span></p>
-    </form>
+ -->    </form>
 <p class="P37"> </p></body>
 </html>

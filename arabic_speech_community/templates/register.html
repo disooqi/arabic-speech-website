@@ -6,6 +6,7 @@
 <div class="blog-post">
     <article class="card-body mx-auto" style="max-width: 400px;">
         <h4 class="card-title mt-3 text-center">Join Today</h4>
+                <h6 class="card-title mt-3 text-center">All the information below is required to get access to the MGB-2 corpus</h6>
         <!--<p class="text-center">Get started with your free account</p>-->
         <!--<p>-->
         <!--<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>-->
@@ -58,6 +59,108 @@
 
             <div class="form-group input-group">
                 <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.position.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.position.errors %}
+                {{ form.position(class="form-control is-invalid", placeholder="Position") }}
+                <div class="invalid-feedback">
+                    {% for error in form.position.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.position(class="form-control", placeholder="Position") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-university"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.affiliation.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.affiliation.errors %}
+                {{ form.affiliation(class="form-control is-invalid", placeholder="Affiliation") }}
+                <div class="invalid-feedback">
+                    {% for error in form.affiliation.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.affiliation(class="form-control", placeholder="Affiliation") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-university"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.department.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.department.errors %}
+                {{ form.department(class="form-control is-invalid", placeholder="Department") }}
+                <div class="invalid-feedback">
+                    {% for error in form.department.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.department(class="form-control", placeholder="Department") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-address-card"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.address.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.address.errors %}
+                {{ form.address(class="form-control is-invalid", placeholder="Address") }}
+                <div class="invalid-feedback">
+                    {% for error in form.address.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.address(class="form-control", placeholder="Address") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-phone-square"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">
+                            {% if form.telephone.flags.required %}*{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% if form.telephone.errors %}
+                {{ form.telephone(class="form-control is-invalid", placeholder="Telephone") }}
+                <div class="invalid-feedback">
+                    {% for error in form.telephone.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.telephone(class="form-control", placeholder="Telephone") }}
+                {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i>
                 &nbsp;<span class="text-danger font-weight-bold text-lg-center">
                     {% if form.password.flags.required %}*{% endif %}
@@ -104,24 +207,3 @@
 </div>
 </div> <!-- card.// -->
 {% endblock content %}
-{% block sidebar %}
-    <aside class="col-md-4 blog-sidebar">
-<div class="p-3">
-    <h4 class="font-italic">Archives</h4>
-    <ol class="list-unstyled mb-0">
-        <li><a href="#">August 2018</a></li>
-        <li><a href="#">July 2018</a></li>
-        <li><a href="#">April 2018</a></li>
-    </ol>
-</div>
-
-<div class="p-3">
-    <h4 class="font-italic">Elsewhere</h4>
-    <ol class="list-unstyled">
-        <li><a href="#">GitHub</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Facebook</a></li>
-    </ol>
-</div>
-    </aside>
-{% endblock sidebar %}
