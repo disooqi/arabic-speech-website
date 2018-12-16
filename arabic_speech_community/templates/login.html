@@ -52,7 +52,10 @@
                 {{ form.submit(class="btn btn-primary btn-block") }}
                 <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
                 <small class="text-muted ml-2">
-                    <a href="#">Forget password?</a>
+                    <a href="{{url_for('reset_request')}}">Forget password?</a>
+                </small>
+                <small class="text-muted ml-2">
+                    <a href="{{url_for('register')}}">need an account?</a>
                 </small>
             </div> <!-- form-group// -->
 
