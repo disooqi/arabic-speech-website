@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+<!--<div class="card bg-light">-->
+<div class="blog-post">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Reset Password</h4>
+        <!--<p class="text-center">Get started with your free account</p>-->
+        <!--<p>-->
+        <!--<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>-->
+        <!--<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>-->
+        <!--</p>-->
+        <!--<p class="divider-text">-->
+        <!--<span class="bg-light">OR</span>-->
+        <!--</p>-->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i></span>
+                </div>
+                {% if form.password.errors %}
+                {{ form.password(class="form-control is-invalid", placeholder="Password") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class="form-control", placeholder="Password") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i></span>
+                </div>
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control is-invalid", placeholder="Confirm Password") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+            {% endif %}
+            </div> <!-- form-group// -->
+
+            <div class="form-group text-center">
+                {{ form.submit(class="btn btn-primary btn-block") }}
+                <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
+
+            </div> <!-- form-group// -->
+
+        </form>
+    </article>
+</div>
+</div> <!-- card.// -->
+{% endblock content %}
+
+
