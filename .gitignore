@@ -107,3 +107,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+arabic_speech_community/static/css/.DS_Store
