@@ -1,4 +1,5 @@
 import os
+import string
 import secrets
 from datetime import date
 from flask import render_template, url_for, flash, redirect, request
@@ -51,13 +52,34 @@ def committee():
     return render_template('committee.html', title='Committee')
 
 
+def generate_random_password():
+    char_classes = (string.ascii_lowercase, string.ascii_uppercase, string.digits, string.punctuation)
+
+    s = secrets.choice(range(8, 13))  # Chooses a password length.
+    char = lambda: secrets.choice(secrets.choice(
+        char_classes))  # Chooses one character, uniformly selected from each of the included character classes.
+    print(s)
+    return ''.join([char() for _ in range(s)])  # Generates the variable-length password.
+
+def send_confirm_email(user):
+    token = user.get_reset_token()
+    msg = Message('Email Confirmation - arabicspeech.org',  recipients=[user.email])
+    msg.body = f'''A user on "arabicspeech.org" has created an account using this email address.
+    
+To confirm this email address, go to: {url_for('reset_token', token=token, _external=True)}
+
+If you did not sign up for this site, you can ignore this message.
+'''
+    info_mail.send(msg)
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        hashed_password = bcrypt.generate_password_hash(generate_random_password()).decode('utf-8')
         user = User(fullname=form.fullname.data, email=form.email.data,
                     password=hashed_password, position=form.position.data,
                     affiliation=form.affiliation.data, department=form.department.data,
@@ -65,8 +87,9 @@ def register():
         db.session.add(user)
         try:
             db.session.commit()
-            flash(f'Account is created for {form.email.data}!', 'success')
-            return redirect(url_for('login'))
+            send_confirm_email(user)
+            flash('An email has sent with instructions to confirm your email and complete your registration!', 'info')
+            return redirect(url_for('home'))
         except:
             db.session.rollback()
             flash(f'Error while create account for {form.email.data}!, try again later', 'danger')
@@ -192,4 +215,4 @@ def reset_token(token):
         flash('Password has been changed successfully', 'success')
         redirect(url_for('login'))
 
-    return render_template('reset_token.html', title='Reset Password', form=form)
+    return render_template('reset_token.html', title='Set/Reset Password', form=form)

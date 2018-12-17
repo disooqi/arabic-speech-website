@@ -158,45 +158,6 @@
                 {{ form.telephone(class="form-control", placeholder="Telephone") }}
                 {% endif %}
             </div> <!-- form-group// -->
-
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i>
-                &nbsp;<span class="text-danger font-weight-bold text-lg-center">
-                    {% if form.password.flags.required %}*{% endif %}
-                </span>
-            </span>
-                </div>
-                {% if form.password.errors %}
-                {{ form.password(class="form-control is-invalid", placeholder="Password") }}
-                <div class="invalid-feedback">
-                    {% for error in form.password.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ form.password(class="form-control", placeholder="Password") }}
-            {% endif %}
-            </div> <!-- form-group// -->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i>
-                &nbsp;<span class="text-danger font-weight-bold text-lg-center">
-                    {% if form.confirm_password.flags.required %}*{% endif %}
-                </span>
-            </span>
-                </div>
-                {% if form.confirm_password.errors %}
-                {{ form.confirm_password(class="form-control is-invalid", placeholder="Confirm password") }}
-                <div class="invalid-feedback">
-                    {% for error in form.confirm_password.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
-            {% endif %}
-            </div> <!-- form-group// -->
             <div class="form-group">
                 {{ form.submit(class="btn btn-primary btn-block") }}
                 <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
