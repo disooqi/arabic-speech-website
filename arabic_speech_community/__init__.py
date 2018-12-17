@@ -18,13 +18,16 @@ login_manager.login_message_category = 'info'
 # Mail port
 # whither to use TLS (Port: 465 (SSL) or 587 (TLS))
 # username and password for that server
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'                            # SMTP Host
+app.config['MAIL_PORT'] = 465                                                # SMTP Port
+app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('ARABIC_SPEECH_EMAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('ARABIC_SPEECH_EMAIL_PASSWORD')
+# app.config['MAIL_USERNAME'] = os.environ.get('ARABIC_SPEECH_EMAIL_USERNAME')
+# app.config['MAIL_PASSWORD'] = os.environ.get('ARABIC_SPEECH_EMAIL_PASSWORD')
 
-app.config['MAIL_DEFAULT_SENDER'] = 'arabicspeechinfo@gmail.com'
+app.config['MAIL_USERNAME'] = 'info@arabicspeech.org'
+app.config['MAIL_PASSWORD'] = 'ArabicSpeech123'
+app.config['MAIL_DEFAULT_SENDER'] = 'info@arabicspeech.org'
 info_mail = Mail(app)
 
 
