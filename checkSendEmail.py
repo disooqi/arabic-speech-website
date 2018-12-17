@@ -23,7 +23,7 @@ info_mail = Mail(app)
 
 def send_confirm_email(email):
     
-    msg = Message('Email Confirmation - arabicspeech.org',  recipients=email)
+    msg = Message('Email Confirmation - arabicspeech.org',  recipients=[email])
     msg.body = f'''A user on "arabicspeech.org" has created an account using this email address.
     
 To confirm this email address, go to: 
