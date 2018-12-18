@@ -21,7 +21,7 @@ login_manager.login_message_category = 'info'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'                            # SMTP Host
 app.config['MAIL_PORT'] = 465                                                # SMTP Port
 app.config['MAIL_USE_SSL'] = True
-#app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USE_TLS'] = True
 # https://serverfault.com/questions/413397/how-to-set-environment-variable-in-systemd-service
 # https://askubuntu.com/questions/1071415/passing-environment-variables-to-systemd-service
 app.config['MAIL_USERNAME'] = os.environ.get('ARABIC_SPEECH_EMAIL_USERNAME')
