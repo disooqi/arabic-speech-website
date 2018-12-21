@@ -31,5 +31,14 @@ app.config['MAIL_PASSWORD'] = os.environ.get('ARABIC_SPEECH_EMAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = 'info@arabicspeech.org'
 info_mail = Mail(app)
 
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6LdzFoQUAAAAAAQvRiVYSSa3YTZubwwaRAM2ULK1'
+app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('AS_reCAPTCHA_SECRET_KEY')
+# optional
+app.config['RECAPTCHA_API_SERVER'] = 'https://www.google.com/recaptcha/api.js'
+# app.config['RECAPTCHA_PARAMETERS'] = ''
+# app.config['RECAPTCHA_DATA_ATTRS'] = ''
+# app.config['RECAPTCHA_USE_SSL'] = 'True'
+
+
 
 from . import routes

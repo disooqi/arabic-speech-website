@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField, TextAreaField
@@ -19,7 +19,8 @@ class RegistrationForm(FlaskForm):
     address = StringField('Postal address', validators=[DataRequired(), Length(max=200)])
 
     telephone = StringField('Telephone number', validators=[DataRequired(), Length(max=15)])
-    
+
+    recaptcha = RecaptchaField()
     submit = SubmitField('Create Account')
 
     def validate_field(self, field):
