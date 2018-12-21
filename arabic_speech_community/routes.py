@@ -1,12 +1,12 @@
 import os
 import string
 import secrets
-from datetime import date
-from flask import render_template, url_for, flash, redirect, request
+from datetime import datetime, date
+from flask import render_template, url_for, flash, redirect, request, send_from_directory
 from . import app, bcrypt, db, info_mail
-from .forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                    RequestResetForm, ResetPasswordForm)
-from .models import User
+from .forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm,
+                    RequestMGB2Form)
+from .models import User, MGB2Link
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -157,12 +157,6 @@ def account():
     return render_template('account.html', title='Account page', form=form)
 
 
-@app.route('/mgb2')
-@login_required
-def mgb2():
-    return render_template('mgb2.html')
-
-
 @app.route('/license')
 @login_required
 def license():
@@ -213,6 +207,65 @@ def reset_token(token):
         user.password = hashed_password
         db.session.commit()
         flash('Password has been changed successfully', 'success')
-        redirect(url_for('login'))
+        return redirect(url_for('login'))
 
     return render_template('reset_token.html', title='Set/Reset Password', form=form)
+
+
+def send_MGB2_email(user, train_link, test_link, dev_link):
+    train_token = train_link.get_MGB2_token()
+    test_token = test_link.get_MGB2_token()
+    dev_token = dev_link.get_MGB2_token()
+    msg = Message('MGB-2 dataset - arabicspeech.org', recipients=[user.email])
+    msg.body = f'''Dear {user.fullname},
+
+Thank you for being interested in using MGB-2. Use the following links to download it:
+
+Train part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=train_token, _external=True)}
+Test part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=test_token, _external=True)}
+Dev part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=dev_token, _external=True)}
+
+If you did not sign up for this site, you can ignore this message.
+'''
+    info_mail.send(msg)
+
+
+@app.route('/mgb2', methods=['POST', 'GET'])
+@login_required
+def mgb2():
+    form = RequestMGB2Form()
+    if form.validate_on_submit():
+        train_link = MGB2Link(mgb2_part='train', user_id=current_user.id)
+        test_link = MGB2Link(mgb2_part='test', user_id=current_user.id)
+        dev_link = MGB2Link(mgb2_part='dev', user_id=current_user.id)
+
+        db.session.add(train_link)
+        db.session.add(test_link)
+        db.session.add(dev_link)
+
+        db.session.commit()
+
+        send_MGB2_email(current_user, train_link, test_link, dev_link)
+
+        flash(f'An email has sent to ({current_user.email}) with instructions to download MGB-2 dataset!', 'info')
+
+    return render_template('mgb2.html', title='MGB 2 Dataset', form=form)
+
+
+@app.route('/mgb2/<token>', methods=['POST', 'GET'])
+def mgb2_download(token):
+
+    mgb2_download_request = MGB2Link.verify_MGB2_token(token)
+
+    if not mgb2_download_request:
+        # TODO: think of redirect it to a 404 page
+        flash('This is an invalid or expired URL, please generate a new one!', 'warning')
+        return redirect(url_for('mgb2'))
+
+    mgb2_download_request.last_date_downloaded = datetime.utcnow()
+    mgb2_download_request.n_downloads += 1
+
+    db.session.commit()
+    return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2')
+
+

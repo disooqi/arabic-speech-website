@@ -76,3 +76,8 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
 
     submit = SubmitField('Reset Password')
+
+
+class RequestMGB2Form(FlaskForm):
+    submit = SubmitField('I Accept and Send me download links')
+

@@ -24,7 +24,8 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(200), nullable=True)
     telephone = db.Column(db.String(15), nullable=True)
 
-    mgb2links = db.relationship('MGB2link', backref='requester', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True)
+    mgb2_downloads = db.relationship('MGB2Link', backref='downloader', lazy=True, uselist=True)
 
     def get_reset_token(self, expires_secs=3600):
         s = Serializer(app.config['SECRET_KEY'], expires_secs)
@@ -45,14 +46,39 @@ class User(db.Model, UserMixin):
         '{self.address},{self.telephone}')"
 
 
-class MGB2link(db.Model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date_requested = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    date_downloaded = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    n_downloads = db.Column(db.Integer, nullable=False, default=0)
-      
-    
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"MGB2User('{self.date_requested}', '{self.downloaded}')"
+        return f"Post('{self.title}', '{self.date_posted}')"
+
+
+class MGB2Link(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    mgb2_part = db.Column(db.String(5), nullable=False)
+    date_requested = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    last_date_downloaded = db.Column(db.DateTime, nullable=True)
+    n_downloads = db.Column(db.Integer, nullable=False, default=0)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False) # 'user' here is the table name
+
+    def get_MGB2_token(self, expires_secs=60*60*24*365):
+        s = Serializer(app.config['SECRET_KEY'], expires_secs)
+        return s.dumps({'link_id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_MGB2_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            link_id = s.loads(token)['link_id']
+        except:
+            return None
+        return MGB2Link.query.get(link_id)
+      
+    def __repr__(self):
+        return f"MGB2Link('{self.mgb2_part}', '{self.date_requested}', , '{self.n_downloads}')"
