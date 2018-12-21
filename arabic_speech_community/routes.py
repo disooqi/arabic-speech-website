@@ -225,7 +225,9 @@ Train part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=train_to
 Test part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=test_token, _external=True)}
 Dev part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=dev_token, _external=True)}
 
-If you did not sign up for this site, you can ignore this message.
+Respectfully,
+Arabic Speech Community
+
 '''
     info_mail.send(msg)
 
