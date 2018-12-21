@@ -268,6 +268,6 @@ def mgb2_download(token):
     mgb2_download_request.n_downloads += 1
 
     db.session.commit()
-    return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2')
+    return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
 
 
