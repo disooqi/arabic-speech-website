@@ -158,8 +158,16 @@
                 {{ form.telephone(class="form-control", placeholder="Telephone") }}
                 {% endif %}
             </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend" style="height:76px">
+                    <span class="input-group-text"><i class="fas fa-shield-alt"></i>
+                        &nbsp;<span class="text-danger font-weight-bold text-lg-center">*</span>
+                    </span>
+                </div>
+                {{ form.recaptcha(class="form-control", style="height:76px;") }}
+            </div> <!-- form-group// -->
             <div class="form-group">
-                {{ form.recaptcha }}
+
                 {{ form.submit(class="btn btn-primary btn-block") }}
                 <!--<button type="submit" class="btn btn-primary btn-block"> Create Account  </button>-->
             </div> <!-- form-group// -->
