@@ -39,7 +39,7 @@
                                     href="http://alt.qcri.org/resources/MGB-3/Arabic_Transcription%20_Guidelines_20170330.pdf">this
                                 transcription guidelines.</a> The MGB-3 data is split into three groups; adaptation,
                             development and evaluation data which will be shared at the evaluation time as shown in the
-                            dates. You can download it <a href="http://crowdsource.cloudapp.net/mgb3.tar.bz2">here.</a>
+                            dates. You can download it <a href=" {{ url_for ('static',filename='data_resources/mgb3.tar.bz2') }} ">here.</a>
                         </p>
                         <p>More details about the Arabic version of the MGB can be found <a
                                 href="http://www.mgb-challenge.org/arabic.html">here.</a></p>
@@ -68,7 +68,12 @@
                             sometimes included too. Modern Standard Arabic (MSA), which constitutes formal speech The
                             Arabic Dialect Identification (ADI) classification assumes that each speech segment
                             corresponds to one Arabic native speaker is spoken in a single dialect.</p>
-                        <p>You can find the data <a href="https://github.com/qcri/dialectID/tree/master/data">here.</a>
+                        <p> There are three editions of the ADI challenge challenge data:
+                            <ul style="list-style-type:square">
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/is2016.tar.bz2') }} ">InterSpeech 2016</a></small></li>
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/mgb3_vardial2017.tar.bz2') }} ">MGB-3 and Vardial 2017</a></small></li>
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/vardial2018.tar.bz2') }} ">Vardial 2018.</a></small></li>
+                            </ul>   
                         </p>
                     </div><!-- /.blog-post -->
 
