@@ -24,6 +24,16 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(200), nullable=True)
     telephone = db.Column(db.String(15), nullable=True)
 
+    '''
+    This is to define users privialges 
+    0 not allowed to login 
+    1 can loging and download corpus
+    2 
+    100 can edit the website and submit blog
+    1000 admin
+    '''
+    rank = db.Column(db.Integer, nullable=False, default=0)
+
     posts = db.relationship('Post', backref='author', lazy=True)
     mgb2_downloads = db.relationship('MGB2Link', backref='downloader', lazy=True, uselist=True)
 
