@@ -5,7 +5,7 @@ from arabic_speech_community.models import User, MGB2Link
 
 allUsers=User.query.all()
 for user in allUsers:
-	print (user.fullname, user.email, user.position, user.affiliation,'\n')
+	print (user.fullname, user.email, user.position, user.affiliation, user.rank, '\n')
 
 '''
 print (User.query.all())
