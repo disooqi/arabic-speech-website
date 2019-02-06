@@ -14,13 +14,10 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
-# Mail server
-# Mail port
-# whither to use TLS (Port: 465 (SSL) or 587 (TLS))
-# username and password for that server
+
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'                            # SMTP Host
 app.config['MAIL_PORT'] = 465                                                # SMTP Port
-app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USE_SSL'] = True     # whither to use TLS (Port: 465 (SSL) or 587 (TLS))
 # app.config['MAIL_USE_TLS'] = True
 # https://serverfault.com/questions/413397/how-to-set-environment-variable-in-systemd-service
 # https://askubuntu.com/questions/1071415/passing-environment-variables-to-systemd-service
@@ -38,7 +35,6 @@ app.config['RECAPTCHA_API_SERVER'] = 'https://www.google.com/recaptcha/api.js'
 # app.config['RECAPTCHA_PARAMETERS'] = ''
 # app.config['RECAPTCHA_DATA_ATTRS'] = {'theme': 'dark'}
 app.config['RECAPTCHA_USE_SSL'] = 'True'
-
 
 
 from . import routes
