@@ -1,4 +1,3 @@
-import os
 import string
 import secrets
 from datetime import datetime, date
@@ -85,14 +84,10 @@ def register():
                     affiliation=form.affiliation.data, department=form.department.data,
                     address=form.address.data, telephone=form.department.data)
         db.session.add(user)
-        try:
-            db.session.commit()
-            send_confirm_email(user)
-            flash('An email has sent with instructions to confirm your email and complete your registration!', 'info')
-            return redirect(url_for('home'))
-        except:
-            db.session.rollback()
-            flash(f'Error while create account for {form.email.data}!, try again later', 'danger')
+        db.session.commit()  # TODO: catch commit exception https://stackoverflow.com/questions/2193670/catching-sqlalchemy-exceptions
+        send_confirm_email(user)  # TODO: catch send email exception https://stackoverflow.com/questions/16119746/python-flask-mail-send-error-check-and-log-it
+        flash('An email has sent with instructions to confirm your email and complete your registration!', 'info')
+        return redirect(url_for('home'))
 
     return render_template('register.html', title='Register', form=form)
 
