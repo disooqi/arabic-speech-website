@@ -7,6 +7,7 @@ from flask_mail import Mail
 
 
 app = Flask(__name__)
+app.config['USE_X_SENDFILE'] = True
 app.config['SECRET_KEY'] = os.environ.get('ARABIC_SPEECH_SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ARABIC_SPEECH_DB_URI')
 GA_TRACKING_ID = os.environ['GA_TRACKING_ID']
