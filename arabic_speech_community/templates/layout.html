@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131508998-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-131508998-1');
+	</script>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -22,6 +34,7 @@
     <link href="{{ url_for('static', filename='css/blog.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/profile-card.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
@@ -62,7 +75,7 @@
             <a class="p-2 text-muted" href="{{ url_for('committee') }}">Committee</a>
             <a class="p-2 text-muted" href="{{ url_for('meetings') }}">Meetings</a>
             <a class="p-2 text-muted" href="{{ url_for('mailinglists') }}">Mailing Lists</a>
-            <a class="p-2 text-muted" href="{{ url_for('publications') }}">Recent Publications</a>
+            <a class="p-2 text-muted" href="{{ url_for('publications') }}">Relevant Publications</a>
             <!--<a class="p-2 text-muted" href="#">Science</a>-->
             <!--<a class="p-2 text-muted" href="#">Health</a>-->
             <!--<a class="p-2 text-muted" href="#">Style</a>-->

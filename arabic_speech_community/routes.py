@@ -214,14 +214,14 @@ def send_MGB2_email(user, train_link, test_link, dev_link):
     msg = Message('MGB-2 dataset - arabicspeech.org', recipients=[user.email])
     msg.body = f'''Dear {user.fullname},
 
-Thank you for being interested in using MGB-2. Use the following links to download it:
+Thank you for your interest in the Arabic Multi-Dialect Broadcast Media Recognition (MGB-2) corpus. Use the following links to download it:
 
-Train part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=train_token, _external=True)}
-Test part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=test_token, _external=True)}
-Dev part of the MGB-2 dataset, go to: {url_for('mgb2_download', token=dev_token, _external=True)}
+Training data: {url_for('mgb2_download', token=train_token, _external=True)}
+Development data: {url_for('mgb2_download', token=dev_token, _external=True)}
+Testing data: {url_for('mgb2_download', token=test_token, _external=True)}
 
-Respectfully,
-Arabic Speech Community
+All the best,
+QCRI speech team
 
 '''
     info_mail.send(msg)

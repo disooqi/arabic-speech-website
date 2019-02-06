@@ -39,7 +39,7 @@
                                     href="http://alt.qcri.org/resources/MGB-3/Arabic_Transcription%20_Guidelines_20170330.pdf">this
                                 transcription guidelines.</a> The MGB-3 data is split into three groups; adaptation,
                             development and evaluation data which will be shared at the evaluation time as shown in the
-                            dates. You can download it <a href="http://crowdsource.cloudapp.net/mgb3.tar.bz2">here.</a>
+                            dates. You can download it <a href=" {{ url_for ('static',filename='data_resources/mgb3.tar.bz2') }} ">here.</a>
                         </p>
                         <p>More details about the Arabic version of the MGB can be found <a
                                 href="http://www.mgb-challenge.org/arabic.html">here.</a></p>
@@ -48,12 +48,12 @@
                         <p>The grapheme-based Arabic speech lexicon is 1:1 word to grapheme mapping. You can find it <a
                                 href=" {{ url_for ('static',filename='data_resources/ar-ar_grapheme_lexicon_20160209.bz2') }} ">here.</a>
                         </p>
-                        <p>The phoneme-based Arabic speech lexicon is roughly 3.8:1 word to phoneme mapping. You can
-                            find it <a
-                                    href="http://alt.qcri.org/resources/speech/dictionary/ar-ar_lexicon_2014-03-17.txt.bz2">here.</a>
+                        <p>The phoneme-based Arabic speech lexicon is roughly 3.8:1 word to phoneme mapping. You can find it <a
+                                href=" {{ url_for ('static',filename='data_resources/ar-ar_phoneme_lexicon_20140317.bz2') }} ">here.</a>
                         </p>
                         <p>The grapheme-based Egyptian Arabic speech lexicon. You can find it <a
-                                href="http://alt.qcri.org/resources/speech/Egyptian/egyVoc400K">here.</a></p>
+                                href=" {{ url_for ('static',filename='data_resources/ar-egy_grapheme_lexicon_20181230.bz2') }} ">here.</a>
+                        </p>
                     </div><!-- /.blog-post -->
                     <div class="blog-post">
                         <h2 class="blog-post-title">Arabic Dialect Identifcation</h2>
@@ -68,7 +68,18 @@
                             sometimes included too. Modern Standard Arabic (MSA), which constitutes formal speech The
                             Arabic Dialect Identification (ADI) classification assumes that each speech segment
                             corresponds to one Arabic native speaker is spoken in a single dialect.</p>
-                        <p>You can find the data <a href="https://github.com/qcri/dialectID/tree/master/data">here.</a>
+                        <p> There are three editions of the ADI challenge challenge data:
+                            <ul style="list-style-type:square">
+                                <!-- /.blog-post
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/is2016.tar.bz2') }} ">InterSpeech 2016</a></small></li>
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/mgb3_vardial2017.tar.bz2') }} ">MGB-3 and Vardial 2017</a></small></li>
+                                <li><small><a href=" {{ url_for ('static',filename='data_resources/vardial2018.tar.bz2') }} ">Vardial 2018.</a></small></li>
+                                 -->
+                                <li><small>InterSpeech 2016 <a href="https://github.com/qcri/dialectID/tree/master/data/train.IS2016">train</a> and <a href="https://github.com/qcri/dialectID/tree/master/data/test.IS2016">test</a> data.</small></li>
+                                <li><small>MGB-3/Vardial 2017 <a href="https://github.com/qcri/dialectID/tree/master/data/train.vardial2017">train</a>, <a href="https://github.com/qcri/dialectID/tree/master/data/dev.vardial2017">dev</a> and <a href="https://github.com/qcri/dialectID/tree/master/data/test.MGB3">test</a>  data.</small></li>
+                                
+                                <li><small><a href="http://alt.qcri.org/vardial2018/">Vardial 2018.</a></small></li> 
+                            </ul>   
                         </p>
                     </div><!-- /.blog-post -->
 
