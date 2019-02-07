@@ -249,7 +249,7 @@ def mgb2():
     return render_template('mgb2.html', title='MGB 2 Dataset', form=form)
 
 
-@app.route('/mgb2/<token>', methods=['POST', 'GET'])
+@app.route('/mgb2/download/<token>', methods=['POST', 'GET'])
 def mgb2_download(token):
 
     mgb2_download_request = MGB2Link.verify_MGB2_token(token)
