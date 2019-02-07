@@ -3,3 +3,14 @@ pip install flask-wtf
 import secrets;secrets.token_hex(16)
 pip install flask-sqlalchemy
 pip install flask-bcrypt
+pip install flask-mail
+
+
+#####
+https://pythonhosted.org/Flask-Principal/
+https://pythonhosted.org/Flask-Security/
+https://passlib.readthedocs.io/en/stable/
+https://flask-user.readthedocs.io/en/latest/
+https://github.com/mongoengine/flask-mongoengine
+https://github.com/flask-admin/flask-admin
+https://ponyorm.com/
