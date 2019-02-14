@@ -18,15 +18,27 @@
                         <br/>
                         <h4 class="">Automatic Speech Recognition</h4>
                         <br/>
-                        <p>Automatic Speech Recognition (ASR) is defined as the process of realising acoustic speech audio into
-                            a corresponding word sequence, which is the word sequence that is as close as possible to what a
-                            human could transcribe. The best start for ASR is the <a
-                                    href="http://htk.eng.cam.ac.uk/docs/docs.shtml">HTKbook</a>.</p>
-                        <p>You can also learn a lot from <a href="http://kaldi-asr.org/">kaldi</a>. Kaldi is a toolkit for
-                            speech recognition written in C++ and
-                            licensed under the Apache License v2.0. Kaldi is intended for use by speech recognition researchers.
-                        </p>
-                        <p>You can learn more about Automatic Speech Recognition from the brief <a href="{{ url_for('publications')}}">list of relevant publication</a> we provide.</p>
+                        <p>Automatic Speech Recognition (ASR) is the process of converting the speech signal into its corresponding text. The quality of ASR systems is measured by how close their recognized sequences of words are to human recognized sequences of words. More formally, the ASR quality, measured by Word Error Rate (WER), is the edit-distance between automatically generated hypotheses and the ground-truth human transcription.</p>
+                        <p>Traditionally, ASR systems are split into four components: the acoustic model, the pronunciation model, the language model, and the  search decoder. Since ASR output hypotheses need to adhere to the statistical structure of language, the language model ensure that the output sequence matches what is likely to be said, e.g. words like "school" or "work" have higher probability than "oil" or "yellow" in the sentence: "Ali walks to his ....... ". The pronunciation dictionary is used to decompose words into small units of sound, known as Phonemes. The acoustic model represents the mapping between the audio signal, its temporal, i.e. time-related, and spectral, i.e. frequency-related, characteristics and different phonemes in language. Each model assigns probabilities to different choices it makes then the decoder searches over all these alternatives weighing their probabilities to come up with the best output hypothesis. A very good starting point to learn about ASR is the HTKbook [1].</p>
+                        <p>Different statistical modeling techniques were used for different components of the ASR system. For acoustic models, Hidden Markov Models (HMMs) with Gaussian Mixture Models (GMMs) state representation [2] was used as well as Neural Networks [3]. With the Deep Learning revolution, Neural Networks [4] got a boost in performance by going deeper [5], having large set of acoustic units in its output (using some ways of combining phonemes) [6], and training on very large volume of data [7].
+For language modeling there was a similar trend, where the n-gram language models [8] got dethroned by recurrent neural network language models [9].</p>
+                        <p>More recently, the research community is going towards a more holistic approach that combine all the four components into one end-to-end ASR system, where inputs are the acoustics signal representation and the output is the word sequence without building four different distinct components [10, 11, 12].</p>
+                        <p>For building an ASR system in practice, you can also learn a lot from kaldi [13]. It is a toolkit for speech recognition written in C++ and licensed under the Apache License v2.0.</p>
+                        <small>
+                        <p style="margin-bottom:0;"> [1] Steve Young, et. al "The HTK book" https://www.danielpovey.com/files/htkbook.pdf </p>
+                        <p style="margin-bottom:0;"> [2] Mark Gales, Steve Young "The Application of Hidden Markov Models in Speech Recognition" 2007, https://mi.eng.cam.ac.uk/~mjfg/mjfg_NOW.pdf</p>
+                        <p style="margin-bottom:0;"> [3] Hervé Bourlard, Nelson Morgan, "Connectionist Speech Recognition: A Hybrid Approach", 1994</p>
+                        <p style="margin-bottom:0;"> [4] Geoffrey Hinton, et al. "Deep Neural Networks for Acoustic Modeling in Speech Recognition: The shared views of four research groups", 2012</p>
+                        <p style="margin-bottom:0;"> [5] Abdel-rahman Mohamed, George Dahl, Geoffrey Hinton, "Acoustic Modeling using Deep Belief Networks" 2010</p>
+                        <p style="margin-bottom:0;"> [6] George Dahl, Dong Yu, Li Deng, Alex Acero, "Context-Dependent Pre-trained Deep Neural Networks for Large Vocabulary Speech Recognition" 2010</p>
+                        <p style="margin-bottom:0;"> [7] Frank Seide, Gang Li, Xie Chen, Dong Yu, "Feature engineering in context-dependent deep neural networks for conversational speech transcription", 2011</p>
+                        <p style="margin-bottom:0;"> [8] Andreas Stolcke, "SRILM - an Extensible Language Modeling Toolkit", 2002</p>
+                        <p style="margin-bottom:0;"> [9] Tomas Mikolov, et. al, "RNNLM - Recurrent Neural Network Language Modeling Toolkit" 2010</p>
+                        <p style="margin-bottom:0;"> [10] Alex Graves, Navdeep Jaitly, "Towards End-To-End Speech Recognition with Recurrent Neural Networks" 2014</p>
+                        <p style="margin-bottom:0;"> [11] Dzmitry Bahdanau, et al "End-to-End Attention-based Large Vocabulary Speech Recognition" 2015</p>
+                        <p style="margin-bottom:0;"> [12] William Chan, et al "Listen, Attend and Spell" 2015</p>
+                        <p style="margin-bottom:0;"> [13] http://kaldi-asr.org/</p>
+                    </small>
                         <hr>
 
                     </div>
@@ -66,17 +78,31 @@
                         <br/>
                         <h4 class="">Text To Speech</h4>
                         <br/>
-                        <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech.  Since Modern Standard Arabic (MSA) is written without diacritics, the first step to develop an Arabic TTS engine [1] is to restore the diacritics of each word in the text [2][3][4]. The diacritized text is then passed to a phonetic transcription module to generate the phoneme sequence for each phrase [5]. The phone sequence and phonological features are used to synthesis the speech output (i. e. sound).  The synthesizer historically was either concatenative [1] or parametric [6]. Recently, End-to-End synthesizers based on neural networks are developed [7][8][9].</p>
+                        <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech. Traditional TTS pipelines or engines consist of few steps to generate the speech:
+                            <ol>
+                            <li>The text normalization or tokenization step aims to convert raw text containing symbols like numbers and abbreviations into the equivalent words.</li> 
+                            <li>In text-to-phoneme or grapheme-to-phoneme conversion step, phonetic transcriptions for each word are assigned.</li>
+                            <li>Prosodic phrasing step aims to divide and mark the text into prosodic units, like phrases and sentences.</li>
+                            <li>Prediction of the target prosody (pitch contour, phoneme durations) step. The target prosody is used to generate/control the output speech.</li>
+                            <li>Finally, the synthesizer is used to convert the symbolic linguistic representation into sound.</li>
+                            <ol>
+                        </p>
+                        <p>Synthesized speech can be created by concatenating units of recorded speech that are stored in a database as in [1] [2]. Common units used in concatenative synthesizers are phones or diphones. Alternatively, statistical parametric synthesizers also known as HMM-based synthesizers (based on hidden Markov models) can be used to create the synthesized speech [3][4]. In these systems, the frequency spectrum (vocal tract), fundamental frequency (voice source), and duration (prosody) of speech are modeled simultaneously by HMMs. Speech waveforms are generated from HMMs themselves based on the maximum likelihood criterion.  Recently, neural networks have been used as acoustic models for statistical parametric synthesizers [5]. In addition, end-to-end DNN-based speech synthesizers such as Tacotron [6] by Google and Deep Voice [7] from Baidu are an active area of research. A state-of-the-art synthesizer based on Tacotron, developed for the Arabic language, is available on github [8].</p>
+                        <p>Since Modern Standard Arabic (MSA) is written without diacritics, the first step to develop an Arabic TTS engine [2] is to restore the diacritics of each word in the text [9][10][11]. The diacritized text is then passed to a phonetic transcription module to generate the phoneme sequence for each phrase [12].  Hence, a synthesizer (i.e. concatenative, parametric, neural networks) can be used to synthesis the speech.</p>
+
                         <small>
-                            <p style="margin-bottom:0;">  [1] Hifny, Yasser, et al. "ArabTalk®: An Implementation for Arabic Text To Speech System."The proceedings of the 4th Conference on Language Engineering. 2004.  </p>
-                            <p style="margin-bottom:0;">  [2] Rashwan, Mohsen AA, et al. "A stochastic Arabic diacritizer based on a hybrid of factorized and unfactorized textual features."IEEE Transactions on Audio, Speech, and Language Processing 19.1 (2011): 166-175. </p>
-                            <p style="margin-bottom:0;"> [3] Darwish, Kareem, Hamdy Mubarak, and Ahmed Abdelali. "Arabic diacritization: Stats, rules, and hacks."Proceedings of the Third Arabic Natural Language Processing Workshop. 2017.</p>
-                            <p style="margin-bottom:0;"> [4] Hifny, Yasser. "Hybrid LSTM/MaxEnt Networks for Arabic Syntactic Diacritics Restoration."IEEE Signal Processing Letters 25.10 (2018): 1515-1519.</p>
-                            <p style="margin-bottom:0;"> [5] https://github.com/nawarhalabi/Arabic-Phonetiser</p>
-                            <p style="margin-bottom:0;"> [6] Abdel-Hamid, Ossama, Sherif Mahdy Abdou, and Mohsen Rashwan. "Improving Arabic HMM based speech synthesis quality." Ninth International Conference on Spoken Language Processing. 2006.</p>
-                            <p style="margin-bottom:0;"> [7] Ping, Wei, et al. "Deep voice 3: Scaling text-to-speech with convolutional sequence learning." (2018).</p>
-                            <p style="margin-bottom:0;"> [8] Wang, Yuxuan, et al. "Tacotron: Towards end-to-end speech synthesis." arXiv preprint arXiv:1703.10135 (2017).</p>
-                            <p style="margin-bottom:0;"> [9] https://github.com/youssefsharief/arabic-tacotron-tts</p> 
+                            <p style="margin-bottom:0;"> [1] A. Hunt and A. Black, :Unit selection in a concatenative speech synthesis system using a large speech database". In ICASSP-96, volume 1, pages 373--376, Atlanta, Georgia, 1996.</p>
+                            <p style="margin-bottom:0;"> [2] Hifny, Yasser, et al. "ArabTalk®: An Implementation for Arabic Text To Speech System."The proceedings of the 4th Conference on Language Engineering. 2004.</p>
+                            <p style="margin-bottom:0;"> [3] HMM/DNN-based Speech Synthesis System (HTS), http://hts.sp.nitech.ac.jp/</p>
+                            <p style="margin-bottom:0;"> [4] Abdel-Hamid, Ossama, Sherif Mahdy Abdou, and Mohsen Rashwan. "Improving Arabic HMM based speech synthesis quality." Ninth International Conference on Spoken Language Processing. 2006.</p>
+                            <p style="margin-bottom:0;"> [5] Merlin: The Neural Network (NN) based Speech Synthesis System, https://github.com/CSTR-Edinburgh/merlin</p>
+                            <p style="margin-bottom:0;"> [6] Ping, Wei, et al. "Deep voice 3: Scaling text-to-speech with convolutional sequence learning." (2018).</p>
+                            <p style="margin-bottom:0;"> [7] Wang, Yuxuan, et al. "Tacotron: Towards end-to-end speech synthesis." arXiv preprint arXiv:1703.10135</p>
+                            <p style="margin-bottom:0;"> [8] https://github.com/youssefsharief/arabic-tacotron-tts</p>
+                            <p style="margin-bottom:0;"> [9] Rashwan, Mohsen AA, et al. "A stochastic Arabic diacritizer based on a hybrid of factorized and unfactorized textual features."IEEE Transactions on Audio, Speech, and Language Processing 19.1 (2011): 166-175.</p>
+                            <p style="margin-bottom:0;"> [10] Darwish, Kareem, Hamdy Mubarak, and Ahmed Abdelali. "Arabic diacritization: Stats, rules, and hacks."Proceedings of the Third Arabic Natural Language Processing Workshop. 2017.</p>
+                            <p style="margin-bottom:0;"> [11] Hifny, Yasser. "Hybrid LSTM/MaxEnt Networks for Arabic Syntactic Diacritics Restoration."IEEE Signal Processing Letters 25.10 (2018): 1515-1519.</p>
+                            <p style="margin-bottom:0;"> [12] https://github.com/nawarhalabi/Arabic-Phonetiser</p> 
                         </small>
                     </div><!-- /.blog-post -->
   </div>
