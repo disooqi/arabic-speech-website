@@ -1,7 +1,7 @@
 import string
 import secrets
 from datetime import datetime, date
-from flask import render_template, url_for, flash, redirect, request, send_from_directory
+from flask import render_template, url_for, flash, redirect, request, send_from_directory, make_response
 from . import app, bcrypt, db, info_mail
 from .forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm,
                     RequestMGB2Form)
@@ -263,6 +263,11 @@ def mgb2_download(token):
     mgb2_download_request.n_downloads += 1
 
     db.session.commit()
-    return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
+    the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True))
+    # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
+
+    the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
+
+    return the_response
 
 
