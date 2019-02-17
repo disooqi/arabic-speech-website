@@ -78,15 +78,17 @@ For language modeling there was a similar trend, where the n-gram language model
                         <br/>
                         <h4 class="">Text To Speech</h4>
                         <br/>
-                        <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech. Traditional TTS pipelines or engines consist of few steps to generate the speech:
-                            <ol>
-                            <li>The text normalization or tokenization step aims to convert raw text containing symbols like numbers and abbreviations into the equivalent words.</li> 
+                        <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech. Traditional TTS pipelines or engines consist of few steps to generate the speech:</p>
+                        <p>
+                            <ul>
+                            <li>The text normalization or tokenization step aims to convert raw text containing symbols like numbers and abbreviations into the equivalent words.</li>
                             <li>In text-to-phoneme or grapheme-to-phoneme conversion step, phonetic transcriptions for each word are assigned.</li>
                             <li>Prosodic phrasing step aims to divide and mark the text into prosodic units, like phrases and sentences.</li>
                             <li>Prediction of the target prosody (pitch contour, phoneme durations) step. The target prosody is used to generate/control the output speech.</li>
                             <li>Finally, the synthesizer is used to convert the symbolic linguistic representation into sound.</li>
-                            <ol>
+                            </ul>
                         </p>
+                        
                         <p>Synthesized speech can be created by concatenating units of recorded speech that are stored in a database as in [1] [2]. Common units used in concatenative synthesizers are phones or diphones. Alternatively, statistical parametric synthesizers also known as HMM-based synthesizers (based on hidden Markov models) can be used to create the synthesized speech [3][4]. In these systems, the frequency spectrum (vocal tract), fundamental frequency (voice source), and duration (prosody) of speech are modeled simultaneously by HMMs. Speech waveforms are generated from HMMs themselves based on the maximum likelihood criterion.  Recently, neural networks have been used as acoustic models for statistical parametric synthesizers [5]. In addition, end-to-end DNN-based speech synthesizers such as Tacotron [6] by Google and Deep Voice [7] from Baidu are an active area of research. A state-of-the-art synthesizer based on Tacotron, developed for the Arabic language, is available on github [8].</p>
                         <p>Since Modern Standard Arabic (MSA) is written without diacritics, the first step to develop an Arabic TTS engine [2] is to restore the diacritics of each word in the text [9][10][11]. The diacritized text is then passed to a phonetic transcription module to generate the phoneme sequence for each phrase [12].  Hence, a synthesizer (i.e. concatenative, parametric, neural networks) can be used to synthesis the speech.</p>
 

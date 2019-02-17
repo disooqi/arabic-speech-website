@@ -55,36 +55,30 @@
 
 <div class="blog-post">
     <h2 class="blog-post-title">Automatic Speech Recognition</h2>
-    <p>Automatic Speech Recognition (ASR) is defined as the process of realising acoustic speech audio into
-        a corresponding word sequence, which is the word sequence that is as close as possible to what a
-        human could transcribe. The best start for ASR is the <a
-                href="http://htk.eng.cam.ac.uk/docs/docs.shtml">HTKbook</a>.</p>
-    <p>You can also learn a lot from <a href="http://kaldi-asr.org/">kaldi</a>. Kaldi is a toolkit for
-        speech recognition written in C++ and
-        licensed under the Apache License v2.0. Kaldi is intended for use by speech recognition researchers.
-    </p>
-    <p>You can learn more about Automatic Speech Recognition from the brief <a href="{{ url_for('publications')}}">list of relevant publication</a> we provide.</p>
+    <p>Automatic Speech Recognition (ASR) is the process of converting the speech signal into its corresponding text. The quality of ASR systems is measured by how close their recognized sequences of words are to human recognized sequences of words. More formally, the ASR quality, measured by Word Error Rate (WER), is the edit-distance between automatically generated hypotheses and the ground-truth human transcription.</p>
+    <p>Traditionally, ASR systems are split into four components: the acoustic model, the pronunciation model, the language model, and the search decoder. Since ASR output hypotheses need to adhere to the statistical structure of language.... <a href="{{ url_for('technologies')}}#nav-asr">Continue reading</a></p>
     <hr>
 </div><!-- /.blog-post -->
 
 <div class="blog-post">
     <h2 class="blog-post-title">Arabic Dialect Identifcation</h2>
-    <p>Arabic dialects are sufficiently diverse to the extent that one can argue to describe them as different languages
-        rather than dialects of the same language. Thus, automatically identifying the input dialect can greatly improve
-        ASR.</p>
-    <p>It can be argued that a language is a dialect with an army and navy. If we take this perspective into
-        consideration, we can describe the different Arabic dialects as different languages. However, Arabic today is a
-        language with different dialects and different armies!</p>
-    <p>Dialect identification can be regarded as a special case of language recognition. However, dialect identification
-        is a harder problem since there is no single view of how many spoken dialects there are in Arabic. You can learn
-        about the latest research in Arabic Dialect Identification (ADI) <a href="{{ url_for('publications')}}">here</a>.</p>
+    <p>Arabic language has several spoken dialects. There are four major dialects for Arabic, including Egyptian, Gulf, Levantine and North African in addition to modern standard Arabic (MSA) which is the official language in Arabic speaking countries. Sometimes these dialects are significantly different to be considered as different languages rather than dialects of the same language. Thus, automatically identifying the input dialect from the speech signal has been an interesting research problem both on its own and to improve ASR.</p>
+   <p>Approaches to dialect identification are closely.... <a href="{{ url_for('technologies')}}#nav-adi">Continue reading</a></p>
 </div><!-- /.blog-post -->
 
 <div class="blog-post">
     <h2 class="blog-post-title">Text To Speech</h2>
     <hr/>
-    <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech. Since Modern Standard Arabic (MSA) is written without diacritics, the first step to develop an Arabic TTS engine... <a href="{{ url_for('technologies')}}#nav-tts">Continue reading</a></p>
+    <p>The Text to Speech (TTS) technology aims to convert a sequence of words into speech. Synthesized speech can be created by concatenating units of recorded speech that are stored in a database as in. Common units used in concatenative synthesizers are phones or diphones. Alternatively, statistical parametric synthesizers also known as HMM-based synthesizers (based on hidden Markov models) can be used to create the synthesized speech. Speech waveforms are generated from HMMs themselves based on the maximum likelihood criterion.  Recently, neural networks have been used as acoustic models for statistical parametric synthesizers. In addition, end-to-end DNN-based speech synthesizers.... <a href="{{ url_for('technologies')}}#nav-tts">Continue reading</a></p>
 </div><!-- /.blog-post -->
+
+<div class="blog-post">
+    <h2 class="blog-post-title">Language Model</h2>
+    <hr/>
+    <p>Language Modeling aims at accurately estimating the probability distribution of a word sequences or sentences produced in a natural language such as Arabic. Having a way to estimate the relative likelihood of different word sequences is useful in many natural language processing applications, especially those where natural text is generated such as the case of speech recognition. The goal of a speech recognizer is to match input speech sounds with word sequences. To accomplish this goal, the speech recognizer will leverage the language model to provide the capability to distinguish between words and phrases that sound similar. These ambiguities are easier to resolve when evidence from the language model is incorporated with the pronunciation model and the acoustic model.</p>
+   <p>Language models rely heavily on the context, or history, to estimate the probability distribution. The context can be long or short, knowledge-rich or knowledge-poor. We may base the estimation on a single preceding word (e.g., bigram), or potentially using knowledge of all words from the start of the passage preceding the word in question. Knowledge-rich models can incorporate information about morphology, syntax or semantics to inform the estimation of the probability distribution of word sequence, whereas knowledge poor models will rely solely on the words as the appear in the text. It is reasonable to state that current language modeling techniques can be split into two categories: count based and continuous-space based language models.... <a href="{{ url_for('technologies')}}#nav-lm">Continue reading</a></p>
+</div><!-- /.blog-post -->
+
 
 
 </div>
