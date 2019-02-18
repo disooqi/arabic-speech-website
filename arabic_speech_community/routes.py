@@ -216,9 +216,9 @@ def send_MGB2_email(user, train_link, test_link, dev_link):
 
 Thank you for your interest in the Arabic Multi-Dialect Broadcast Media Recognition (MGB-2) corpus. Use the following links to download it:
 
-Training data: {url_for('mgb2_download', token=train_token, _external=True)}
-Development data: {url_for('mgb2_download', token=dev_token, _external=True)}
-Testing data: {url_for('mgb2_download', token=test_token, _external=True)}
+Training data: wget --content-disposition {url_for('mgb2_download', token=train_token, _external=True)}
+Development data: wget --content-disposition {url_for('mgb2_download', token=dev_token, _external=True)}
+Testing data: wget --content-disposition {url_for('mgb2_download', token=test_token, _external=True)}
 
 All the best,
 QCRI speech team
@@ -266,6 +266,7 @@ def mgb2_download(token):
     the_response = make_response()
     # the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True))
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
+    the_response.headers['Content-Description'] = 'File Transfer'
     the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.bz2'
     the_response.headers['Content-Type'] = 'application/x-tar'
     the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
