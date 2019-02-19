@@ -37,9 +37,9 @@
                             Given that dialectal Arabic has no orthographic rules, each program has been transcribed by
                             four different transcribers using <a
                                     href="http://alt.qcri.org/resources/MGB-3/Arabic_Transcription%20_Guidelines_20170330.pdf">this
-                                transcription guidelines.</a> The MGB-3 data is split into three groups; adaptation,
-                            development and evaluation data which will be shared at the evaluation time as shown in the
-                            dates. You can download it <a href=" {{ url_for ('static',filename='data_resources/mgb3.tar.bz2') }} ">here.</a>
+                                transcription guideline.</a> The MGB-3 data is split into three groups; adaptation,
+                            development and evaluation data which was shared at the evaluation. 
+                            You can download it <a href=" {{ url_for ('static',filename='data_resources/mgb3.tar.bz2') }} ">here.</a>
                         </p>
                         <p>More details about the Arabic version of the MGB can be found <a
                                 href="http://www.mgb-challenge.org/arabic.html">here.</a></p>
@@ -51,7 +51,7 @@
                         <p>The phoneme-based Arabic speech lexicon is roughly 3.8:1 word to phoneme mapping. You can find it <a
                                 href=" {{ url_for ('static',filename='data_resources/ar-ar_phoneme_lexicon_20140317.bz2') }} ">here.</a>
                         </p>
-                        <p>The grapheme-based Egyptian Arabic speech lexicon. You can find it <a
+                        <p>The grapheme-based Egyptian Arabic speech lexicon can be found <a
                                 href=" {{ url_for ('static',filename='data_resources/ar-egy_grapheme_lexicon_20181230.bz2') }} ">here.</a>
                         </p>
                     </div><!-- /.blog-post -->
@@ -59,15 +59,18 @@
                         <h2 class="blog-post-title">Arabic Dialect Identifcation</h2>
                         <br/>
                         <p>In this task, we classify Arabic speech into five dialects:</p>
-                        <p>Egyptian Arabic (EGY) covers the dialects of the Nile valley: Egypt and Sudan. Levantine
-                            (LAV) Arabic includes the dialects of Lebanon, Syria, Jordan, Palestine, and Israel. Gulf
-                            Arabic (GLF) includes the dialects of Kuwait, United Arab Emirates, Bahrain, and Qatar.
-                            Saudi Arabia is typically included although there is a wide range of sub-dialects within it.
-                            Omani Arabic is sometimes included as well. North African (NOR) Arabic (also known as
-                            Maghrebi) covers the dialects of Morocco, Algeria, Tunisia, and Mauritania. Libyan Arabic is
-                            sometimes included too. Modern Standard Arabic (MSA), which constitutes formal speech The
-                            Arabic Dialect Identification (ADI) classification assumes that each speech segment
-                            corresponds to one Arabic native speaker is spoken in a single dialect.</p>
+                        <ul>
+                        <li> Egyptian Arabic (EGY) covers the dialects of the Nile valley: Egypt and Sudan. </li>
+                        <li> Levantine Arabic (LAV) includes the dialects of Lebanon, Syria, Jordan and Palestine. </li>
+                        <li> Gulf Arabic (GLF) includes the dialects of Kuwait, United Arab Emirates, Bahrain, and Qatar.
+                            Saudi Arabia is typically included, although there is a wide range of sub-dialects within it.
+                            Omani Arabic is sometimes included as well. </li>
+                        <li> North African Arabic (NOR) - also known as Maghrebi - covers the dialects of Morocco, Algeria, Tunisia, and Mauritania. Libyan Arabic is
+                            sometimes included too.
+                        <li> Modern Standard Arabic (MSA), which constitutes formal speech. </li> 
+                        </ul>
+                        <p> The Arabic Dialect Identification (ADI) classification assumes that each speech segment corresponds to one dialect. </p>
+                        
                         <p> There are three editions of the ADI challenge challenge data:
                             <ul style="list-style-type:square">
                                 <!-- /.blog-post
