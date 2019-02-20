@@ -267,9 +267,9 @@ def mgb2_download(token):
     # the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True))
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
     the_response.headers['Content-Description'] = 'File Transfer'
-    the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.bz2'
+    the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.gz'
     the_response.headers['Content-Type'] = 'application/x-tar'
-    the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
+    the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.gz'
 
 
     return the_response
