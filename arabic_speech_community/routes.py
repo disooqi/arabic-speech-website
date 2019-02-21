@@ -264,14 +264,23 @@ def mgb2_download(token):
 
     db.session.commit()
     the_response = make_response()
+
+    mgb2_links = {
+        'dev':'https://doc-14-8g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/mi7ae7r9rsomh2cjs7cta6hgne4t22n1/1550743200000/07897698524543748950/*/1mWmZiD1GDDW6V2gypK8CP27PaAEFE4mx?e=download',
+        'test':'https://doc-0o-8g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/5j76vfr1u77mitdd003ftg4ddmmb50p3/1550743200000/07897698524543748950/*/1RcWVnUJhDmjI5xv759BYJ2wBFaYqPdJk?e=download',
+        'train':'https://doc-10-8g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/4bcj79ocne31qj3bmmo2b264qvfh8mq6/1550743200000/07897698524543748950/*/1EVKGtRjZ0To6X9RL1T633ihnbx2oS-wl?e=download'
+    }
     # the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True))
+    # the_response.headers['Content-Description'] = 'File Transfer'
+    # the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.bz2'
+    # the_response.headers['Content-Type'] = 'application/x-tar'
+    # the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
+    #
+    #
+    # return the_response
+
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
-    the_response.headers['Content-Description'] = 'File Transfer'
-    the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.bz2'
-    the_response.headers['Content-Type'] = 'application/x-tar'
-    the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
 
-
-    return the_response
+    return redirect(mgb2_links[mgb2_download_request.mgb2_part])
 
 
