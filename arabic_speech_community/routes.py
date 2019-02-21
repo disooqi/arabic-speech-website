@@ -216,9 +216,11 @@ def send_MGB2_email(user, train_link, test_link, dev_link):
 
 Thank you for your interest in the Arabic Multi-Dialect Broadcast Media Recognition (MGB-2) corpus. Use the following links to download it:
 
-Training data: wget --content-disposition {url_for('mgb2_download', token=train_token, _external=True)}
-Development data: wget --content-disposition {url_for('mgb2_download', token=dev_token, _external=True)}
-Testing data: wget --content-disposition {url_for('mgb2_download', token=test_token, _external=True)}
+Training data: wget -c {url_for('mgb2_download', token=train_token, _external=True)} -O train.tar.gz
+
+Development data: wget -c {url_for('mgb2_download', token=dev_token, _external=True)} -O dev.tar.gz
+
+Testing data: wget -c {url_for('mgb2_download', token=test_token, _external=True)} -O test.tar.gz
 
 All the best,
 QCRI speech team
