@@ -276,9 +276,7 @@ def mgb2_download(token):
     # the_response.headers['Content-Type'] = 'application/x-tar'
     # the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
     #
-    #
     # return the_response
-
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
 
     return redirect(mgb2_links[mgb2_download_request.mgb2_part])
