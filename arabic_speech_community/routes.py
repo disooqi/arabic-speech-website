@@ -218,7 +218,7 @@ Thank you for your interest in the Arabic Multi-Dialect Broadcast Media Recognit
 
 Training data: wget -c {url_for('mgb2_download', token=train_token, _external=True)} -O train.tar.gz
 
-Development data: wget -c {url_for('mgb2_download', token=dev_token, _external=True)} -O dev.tar.gz
+Development data: wget --content-disposition {url_for('mgb2_download', token=dev_token, _external=True)}
 
 Testing data: wget --content-disposition {url_for('mgb2_download', token=test_token, _external=True)} 
 
@@ -269,17 +269,14 @@ def mgb2_download(token):
 
     mgb2_links = {
         'dev':'http://crowdsource.cloudapp.net/mgb2/dev.tar.gz',
-        'test':'https://doc-0o-8g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/5j76vfr1u77mitdd003ftg4ddmmb50p3/1550743200000/07897698524543748950/*/1RcWVnUJhDmjI5xv759BYJ2wBFaYqPdJk?e=download',
+        'dev':'http://crowdsource.cloudapp.net/mgb2/dev.tar.gz',
         'train':'http://crowdsource.cloudapp.net/mgb2/train.tar.gz'
     }
     #
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
-    if mgb2_download_request.mgb2_part == 'test':
-        the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True))
-        # the_response.headers['Content-Description'] = 'File Transfer'
-        # the_response.headers['Content-Disposition'] = f'attachment; filename={mgb2_download_request.mgb2_part}.tar.bz2'
-        # the_response.headers['Content-Type'] = 'application/x-tar'
-        the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.bz2'
+    if mgb2_download_request.mgb2_part == 'test' or mgb2_download_request.mgb2_part == 'dev' :
+        the_response = make_response(send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.gz', as_attachment=True))
+        the_response.headers['X-Accel-Redirect'] = f'/mgb2/download/{mgb2_download_request.mgb2_part}.tar.gz'
 
         return the_response
 
