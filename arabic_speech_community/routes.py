@@ -268,9 +268,9 @@ def mgb2_download(token):
     the_response = make_response()
 
     mgb2_links = {
-        'dev':'https://drive.google.com/open?id=1mWmZiD1GDDW6V2gypK8CP27PaAEFE4mx',
+        'dev':'http://crowdsource.cloudapp.net/mgb2/dev.tar.gz',
         'test':'https://doc-0o-8g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/5j76vfr1u77mitdd003ftg4ddmmb50p3/1550743200000/07897698524543748950/*/1RcWVnUJhDmjI5xv759BYJ2wBFaYqPdJk?e=download',
-        'train':'https://drive.google.com/open?id=1EVKGtRjZ0To6X9RL1T633ihnbx2oS-wl'
+        'train':'http://crowdsource.cloudapp.net/mgb2/train.tar.gz'
     }
     #
     # return send_from_directory('/data/mgb2', f'{mgb2_download_request.mgb2_part}.tar.bz2', as_attachment=True)
