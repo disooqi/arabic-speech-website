@@ -2,10 +2,27 @@
 
 {% block content %}
 <div class="col-md-8 blog-main">
-   <br/>
-   <br/>
-       <div class="blog-post">
-        <center>
+    <br/>
+    <br/>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                       aria-controls="nav-home" aria-selected="true">MGB-5 Overview</a>
+                    <a class="nav-item nav-link" id="nav-asr-tab" data-toggle="tab" href="#nav-asr" role="tab"
+                       aria-controls="nav-asr" aria-selected="false">ASR</a>
+                    <a class="nav-item nav-link" id="nav-adi-tab" data-toggle="tab" href="#nav-adi" role="tab"
+                       aria-controls="nav-adi" aria-selected="false">ADI</a>
+                    <a class="nav-item nav-link" id="nav-date-tab" data-toggle="tab" href="#nav-date" role="tab"
+                       aria-controls="nav-date" aria-selected="false">Dates</a>   
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h2 class="blog-post-title">MGB Overview</h2>
+                        <br/>
+                        <center>
             <h5>The Fifth Edition of the Multi-Genre Broadcast Challenge: MGB-5 </h5>
         </center>
             <br>
@@ -15,42 +32,76 @@
                                     href="https://docs.google.com/forms/d/e/1FAIpQLSf9phZNH3dNke1_LNsRfKCnHvd93wFGKtG6g8cV6zr7JBiNxA/viewform?usp=sf_link">here.</a>
             </p>
             
-
-       </div><!-- /.blog-post -->
-</div>
-
-
-<div class="col-md-8 blog-main">
-    <br/>
-    <br/>
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                       aria-controls="nav-home" aria-selected="true">Speech Recognition</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                       aria-controls="nav-profile" aria-selected="false">Dialect Identifcation</a>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <h6 class="blog-post-title">Moroccan ASR</h6>
-                        <br/>
-                        <p>ASR ...</p>
+                       
                         <hr>
+                        <h3>Organizers</h3>
+                            <ul style="list-style-type:square">
+                                <li>Ahmed Ali, Younes Samih, Ahmed Abdel Ali, Hamdy Mubarak  (Qatar Computing Research Institute)</li>
+                                <li>Suwon Shon, James Glass (MIT)</li>
+                                <li>Steve Renals, Peter Bell (University of Edinburgh)</li>
+                                <li>Khalid Choukri (ELDA)</li>
+                            </ul>   
+                        </p>
                         
-                   
+                        
+                    </div><!-- /.blog-post -->
+
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-				    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <h5 class="blog-post-title">ADI 2.0</h5>
+                
+                <!-- asr post -->
+                <div class="tab-pane fade" id="nav-asr" role="tabpanel" aria-labelledby="nav-asr-tab">
+                    <div class="blog-post">
                         <br/>
-                        <p>ADI ...</p>
-                        <hr>
+                        <h3>Moroccan ASR Automatic Speech Recognition</h3>
+                        <p>All acoustic and language model training data will be provided to participants.
+                        <p>This year, we release two-sets of data on dialectal Moroccan Arabic speech audio collected from youtube.</p>
+                         <ul style="list-style-type:square">
+                                <li>16 hours dialectal speech data with genre-labeling and multi-reference transcription</li>
+                                <li>60 hours untranscribed dialectal data with genre-labeling</li>
+                            </ul> 
                         
-                   
+                        <p>Participants are encouraged to reuse the MGB-2 data as a background model; acoustic model data comprised around 1,200 hours of broadcast TV data with subtitles matched by a lightly-supervised alignment process, along with more than 130M words for language modeling as used in MGB-2.</p>
+                    </div><!-- /.blog-post -->
                 </div>
-                    
+                
+                <!-- adi post -->
+                <div class="tab-pane fade" id="nav-adi" role="tabpanel" aria-labelledby="nav-adi-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h3>Fine-grained ADI </h3>
+                        <p> The task of ADI is dialect identification of speech from YouTube to one of the 17 dialects. The previous studies on Arabic dialect identification using audio signal is limited to 5 dialect classes by lack of speech corpus. To present a fine-grained analysis on the Arabic dialect speech, we collected Arabic dialect from YouTube. </p>
+                        <p> For Train set, about 3,000 hours of Arabic dialect speech data from 17 countries on the Arabic world was collected from YouTube. Since we collected the speech by considering the YouTube channels in a specific country, certain that the dataset might have some labeling errors. For this reason, we have 2 sub-tracks for the ADI task, supervised learning track and unsupervised track. Thus, the label of the train set can be either used or not and it completely depends on the choice of participants.</p>
+                        <p> For the Dev and Test set, about 280 hours speech data was collected from YouTube. After automatic speaker linking and dialect labeling by human annotators, we selected 57 hours of speech dataset to use as Dev and Test set for performance evaluation. The test dataset was considered to have three sub-categories by the segment duration to represent short (under 5 sec), medium(between 5 sec and 20 sec), long duration (over 20 sec) of the dialectal speech.</p>
+
+
+                         <!-- adi post 
+                         <ul style="list-style-type:square">
+                                <li>Train set : About 3,000 hours of Arabic dialect speech data from 20 countries on Arab world. Since we collected the speech by considering the YouTube channels in specific country, certain that the dataset might have some labelling errors. For this reason, we have 2 sub-tracks for the ADI task, supervised learning track and unsupervised track. Thus, the label of the train set can be either used or not and it is completely depend on a choice of participants.</li>
+                                <li>Dev and Test set: About 280 hours dataset and each country has at least 10 hours speech for development and evaluation of the ADI system. The dataset was labeled by human annotators. The dataset has three sub-categories considering the segment duration to represent short (under 5 sec), medium(between 5 sec and 20 sec), long duration (over 20 sec) of the dialectal speech.</li>
+                            </ul> 
+                            -->
+                        
+                        </div><!-- /.blog-post -->
                 </div>
+                
+                <!-- Dates post -->
+                <div class="tab-pane fade" id="nav-date" role="tabpanel" aria-labelledby="nav-date-tab">
+                    <div class="blog-post">
+                        <br/>
+                        <h3>Dates for the MGB-5 as follows:</h3>
+                         <ul style="list-style-type:square">
+                                <li>15 April 2019 (or earlier) - training/dev data release</li>
+                                <li>15 May 2019  - test data release</li>
+                                <li>3 June 2019 - End of evaluation</li>
+                                <li>10 June 2019 - Initial results available</li>
+                                <li>20 June 2019 - Final results available</li>
+                                <li>1 July 2019 - Paper submission deadline</li>
+                                <li>8 July 2019 - revision due</li>
+                              
+                            </ul> 
+                        </div><!-- /.blog-post -->
+                </div>
+                
             </div>
 </div>
-{% endblock content %}  
+{% endblock content %}
