@@ -45,6 +45,10 @@ def mailinglists():
 def meetings():
     return render_template('meetings.html', title='Meetings')
 
+@app.route('/mgb5')
+def mgb5():
+    return render_template('mgb5.html', title='MGB5')
+
 
 @app.route('/committee')
 def committee():
