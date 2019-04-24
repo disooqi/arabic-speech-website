@@ -53,14 +53,23 @@
                     <div class="blog-post">
                         <br/>
                         <h3>Moroccan ASR Automatic Speech Recognition</h3>
-                        <p>All acoustic and language model training data will be provided to participants.
-                        <p>This year, we release two-sets of data on dialectal Moroccan Arabic speech audio collected from youtube.</p>
+                        
+						<p> The MGB-5 Arabic data comprised 14 hours of Moroccan Arabic speech extracted from 93 YouTube videos distributed across seven genres: comedy, cooking, family/children, fashion, drama, sports, and science clips. We assume that the MGB-5 data is not enough by itself to build robust speech recognition systems, but could be useful for adaptation, and for hyper-parameter tuning of models built using the MGB-2 data. Therefore, we suggest to reuse the MGB-2 training data in this challenge, and consider the provided in-domain data as (supervised) adaptation data.</p>
+						<p> Given that dialectal Arabic does not have a clearly defined orthography, different people tend to write the same word in slightly different forms. Therefore, instead of developing strict guidelines to ensure a standardized orthography, we allow for variations in spelling. Thus we decided to have multiple transcriptions, allowing transcribers to write the transcripts as they deemed correct. Every file has been segmented and transcribed by four different Moroccan annotators.</p> 
+						<p> The 93 YouTube clips have been manually labelled for speech, non-speech segments. We have selected roughly 12 minutes from each program for transcription. The resulting speech segments were then distributed into train, development and test data sets as follows:</p>
+
+
                          <ul style="list-style-type:square">
-                                <li>16 hours dialectal speech data with genre-labeling and multi-reference transcription</li>
-                                <li>60 hours untranscribed dialectal data with genre-labeling</li>
+                                <li>Training data: 10.2 hours from 69 programs</li>
+                                <li>Development data: 1.8 hours from 10 programs</li>
+								<li>Development data: 1.8 hours from 10 programs</li>
+								<li>Testing data: 2.0 hours from 14 hours</li>
                             </ul> 
                         
-                        <p>Participants are encouraged to reuse the MGB-2 data as a background model; acoustic model data comprised around 1,200 hours of broadcast TV data with subtitles matched by a lightly-supervised alignment process, along with more than 130M words for language modeling as used in MGB-2.</p>
+                        <p>In addition to the transcribed 14 hours, we are releasing the full programs, which is total of 48 hours for the 93 programs. Participants can consider this data as for in-domain speech or genre adaption.</p>
+		
+						<p> You can find sample here: audio, transcription, segmentation, transcription in Buckwalter.</p>
+.</p>
                     </div><!-- /.blog-post -->
                 </div>
                 
