@@ -52,23 +52,31 @@
                 <div class="tab-pane fade" id="nav-asr" role="tabpanel" aria-labelledby="nav-asr-tab">
                     <div class="blog-post">
                         <br/>
-                        <h3>Moroccan ASR Automatic Speech Recognition</h3>
+                        <h3>Moroccan Arabic Automatic Speech Recognition</h3>
                         
-						<p>The MGB-5 Arabic data comprises 14 hours of Moroccan Arabic speech extracted from 93 YouTube videos distributed across seven genres: comedy, cooking, family/children, fashion, drama, sports, and science clips. We assume that the MGB-5 data is not enough by itself to build robust speech recognition systems, but could be useful for adaptation, and for hyper-parameter tuning of models built using the MGB-2 data. Therefore, we suggest to reuse the MGB-2 training data in this challenge, and consider the provided in-domain data as (supervised) adaptation data.</p>
+						<p>The MGB-5 Arabic data comprises <b>14</b> hours of Moroccan Arabic speech extracted from <b>93</b> YouTube videos distributed across seven genres: comedy, cooking, family/children, fashion, drama, sports, and science clips. We assume that the MGB-5 data is not enough by itself to build robust speech recognition systems, but could be useful for adaptation, and for hyper-parameter tuning of models built using the <a 
+                                    href="https://arabicspeech.org/mgb2">MGB-2 data.</a> Therefore, we suggest to reuse the MGB-2 training data in this challenge, and consider the provided in-domain data as (supervised) adaptation data.</p>
 						<p>Given that dialectal Arabic does not have a clearly defined orthography, different people tend to write the same word in slightly different forms. Therefore, instead of developing strict guidelines to ensure a standardized orthography, variations in spelling are allowed. Thus multiple transcriptions were produced, allowing transcribers to write the transcripts as they deemed correct. Every file has been segmented and transcribed by four different Moroccan annotators.</p> 
 						<p>The 93 YouTube clips have been manually labelled for speech, non-speech segments. About 12 minutes from each program were selected for transcription. The resulting speech segments were then distributed into train, development and test data sets as follows:</p>
 
 
                          <ul style="list-style-type:square">
-                                <li>Training data: 10.2 hours from 69 programs</li>
-                                <li>Development data: 1.8 hours from 10 programs</li>
-								<li>Testing data: 2.0 hours from 14 programs</li>
+                                <li>Training data: <b>10.2</b> hours from <b>69</b> programs</li>
+                                <li>Development data: <b>1.8</b> hours from <b>10</b> programs</li>
+								<li>Testing data: <b>2.0</b> hours from <b>14</b> programs</li>
                             </ul> 
                         
-                        <p>In addition to the transcribed 14 hours, the full programs are also provided, which amounts 48 hours for the 93 programs. This data can be used for in-domain speech or genre adaptation.</p>
+                        <p>In addition to the transcribed <b>14</b> hours, the full programs are also provided, which amounts <b>48</b> hours for the 93 programs. This data can be used for in-domain speech or genre adaptation.</p>
 		
-						<p> You can find sample here: <a href=" {{ url_for ('static',filename='data_resources/mgb5_sample/Comedy_2TToYvDrMDM.wav') }} ">audio</a>, <a href=" {{ url_for ('static',filename='data_resources/mgb5_sample/Comedy_2TToYvDrMDM_annotator_2.seg') }} ">segmentation</a>, <a href=" {{ url_for ('static',filename='data_resources/mgb5_sample/Comedy_2TToYvDrMDM_annotator_2.txt.arabic') }} ">transcription in Arabic</a> and  <a href=" {{ url_for ('static',filename='data_resources/mgb5_sample/Comedy_2TToYvDrMDM_annotator_2.txt.bw') }} ">transcription in Buckwalter</a>.</p>
-.</p>
+						<p> You can find sample here: <a href=" {{ url_for ('static',filename='data_resources/mgb5/sample/Comedy_2TToYvDrMDM.wav') }} ">audio</a>, <a href=" {{ url_for ('static',filename='data_resources/mgb5/sample/Comedy_2TToYvDrMDM_annotator_2.seg') }} ">segmentation</a>, <a href=" {{ url_for ('static',filename='data_resources/mgb5/sample/Comedy_2TToYvDrMDM_annotator_2.txt.arabic') }} ">transcription in Arabic</a> and  <a href=" {{ url_for ('static',filename='data_resources/mgb5/sample/Comedy_2TToYvDrMDM_annotator_2.txt.bw') }} ">transcription in Buckwalter</a>.</p>
+						
+						<p> If you want to access the <a 
+                                    href="http://www.islrn.org/resources/938-639-614-524-5/">MGB-5 Moroccan Dialect corpus</a>, 
+									you need to sign the  <a 
+									href=" {{ url_for ('static',filename='data_resources/mgb5/EVALUATION_ARABIC-Moroccan_MGB-5-license.pdf') }} ">license agrremnet</a> 
+									and email us at: <a href="mailto:info@arabicspeech.org">info@arabicspeech.org</a>.
+						 
+
                     </div><!-- /.blog-post -->
                 </div>
                 
@@ -76,19 +84,17 @@
                 <div class="tab-pane fade" id="nav-adi" role="tabpanel" aria-labelledby="nav-adi-tab">
                     <div class="blog-post">
                         <br/>
-                        <h3>Fine-grained ADI </h3>
-                        <p> The task of ADI is dialect identification of speech from YouTube to one of the 17 dialects. The previous studies on Arabic dialect identification using audio signal is limited to 5 dialect classes by lack of speech corpus. To present a fine-grained analysis on the Arabic dialect speech, we collected Arabic dialect from YouTube. </p>
-                        <p> For Train set, about 3,000 hours of Arabic dialect speech data from 17 countries on the Arabic world was collected from YouTube. Since we collected the speech by considering the YouTube channels in a specific country, certain that the dataset might have some labeling errors. For this reason, we have 2 sub-tracks for the ADI task, supervised learning track and unsupervised track. Thus, the label of the train set can be either used or not and it completely depends on the choice of participants.</p>
-                        <p> For the Dev and Test set, about 280 hours speech data was collected from YouTube. After automatic speaker linking and dialect labeling by human annotators, we selected 57 hours of speech dataset to use as Dev and Test set for performance evaluation. The test dataset was considered to have three sub-categories by the segment duration to represent short (under 5 sec), medium(between 5 sec and 20 sec), long duration (over 20 sec) of the dialectal speech.</p>
+                        <h3>Fine-grained Arabic Dialect Identification (ADI) </h3>
+                        <p> The task of ADI is dialect identification of speech from YouTube to one of the <b>17</b> dialects <font color="red">(ADI17)</font>. The previous studies on Arabic dialect identification using audio signal is limited to 5 dialect classes by lack of speech corpus. To present a fine-grained analysis on the Arabic dialect speech, we collected Arabic dialect from YouTube. </p>
+                        <p> For Train set, about <b>3,000</b> hours of Arabic dialect speech data from 17 countries on the Arabic world was collected from YouTube. Since we collected the speech by considering the YouTube channels in a specific country, certain that the dataset might have some labeling errors. For this reason, we have two sub-tracks for the ADI task, supervised learning track and unsupervised track. Thus, the label of the train set can be either used or not and it completely depends on the choice of participants.</p>
+                        <p> For the Dev and Test set, about <b>280</b> hours speech data was collected from YouTube. After automatic speaker linking and dialect labeling by human annotators, we selected <b>57</b> hours of speech dataset to use as Dev and Test set for performance evaluation. The test dataset was considered to have three sub-categories by the segment duration to represent short (under 5 sec), medium(between 5 sec and 20 sec), long duration (over 20 sec) of the dialectal speech.</p>
 
-
-                         <!-- adi post 
-                         <ul style="list-style-type:square">
-                                <li>Train set : About 3,000 hours of Arabic dialect speech data from 20 countries on Arab world. Since we collected the speech by considering the YouTube channels in specific country, certain that the dataset might have some labelling errors. For this reason, we have 2 sub-tracks for the ADI task, supervised learning track and unsupervised track. Thus, the label of the train set can be either used or not and it is completely depend on a choice of participants.</li>
-                                <li>Dev and Test set: About 280 hours dataset and each country has at least 10 hours speech for development and evaluation of the ADI system. The dataset was labeled by human annotators. The dataset has three sub-categories considering the segment duration to represent short (under 5 sec), medium(between 5 sec and 20 sec), long duration (over 20 sec) of the dialectal speech.</li>
-                            </ul> 
-                            -->
+						<p> You can find more details about the ADI17 challenge <a 
+                                    href="https://github.com/swshon/arabic-dialect-identification">here.</a>
+						</p>
                         
+						
+						
                         </div><!-- /.blog-post -->
                 </div>
                 
@@ -98,13 +104,13 @@
                         <br/>
                         <h3>Dates for the MGB-5 as follows:</h3>
                          <ul style="list-style-type:square">
-                                <li>15 April 2019 (or earlier) - training/dev data release</li>
-                                <li>15 May 2019  - test data release</li>
-                                <li>3 June 2019 - End of evaluation</li>
-                                <li>10 June 2019 - Initial results available</li>
-                                <li>20 June 2019 - Final results available</li>
-                                <li>1 July 2019 - Paper submission deadline</li>
-                                <li>8 July 2019 - revision due</li>
+                                <li>25 April 2019 - training/dev data release</li>
+                                <li>25 May 2019   - test data release</li>
+                                <li>5 June 2019   - End of evaluation</li>
+                                <li>10 June 2019  - Initial results available</li>
+                                <li>20 June 2019  - Final results available</li>
+                                <li>1 July 2019   - Paper submission deadline</li>
+                                <li>8 July 2019   - revision due</li>
                               
                             </ul> 
                         </div><!-- /.blog-post -->
