@@ -54,6 +54,9 @@ def mgb5():
 def committee():
     return render_template('committee.html', title='Committee')
 
+@app.route('/ahmed')
+def ahmed():
+    return render_template('ahmed.html', title='Ahmed')
 
 def generate_random_password():
     char_classes = (string.ascii_lowercase, string.ascii_uppercase, string.digits, string.punctuation)
